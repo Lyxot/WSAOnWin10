@@ -1,4 +1,4 @@
-name: Build WsaPatch.dll for x64
+name: Build WsaPatch.dll for arm64
 
 on:
   workflow_dispatch:
@@ -6,6 +6,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  schedule:
+    - cron: '0 0 * * *'
 
 env:
   # Path to the solution file relative to the root of the project.
@@ -34,14 +36,20 @@ jobs:
           cd WSAPatch
           cmake --build build --config Release --verbose
 
+      - name: Upload WsaPatch.dll
+        uses: actions/upload-artifact@v3
+        with:
+          name: WsaPatch-build
+          path: .\WsaPatch\build
+          
       - name: commit
         run: |
           copy WSAPatch/build/Release/WsaPatch.dll DLLs/x64
-          rmdir /Q /S WSAPatch
+          remove-item WSAPatch -Recurse -Force
           git config --global user.email 1169942595@qq.com
           git config --global user.name A-JiuA
           git add DLLs/x64
-          git commit -m "update WSAPatch.dll for x64"
+          git commit -m "update WsaPatch.dll for x64"
           
       - name: Push changes
         uses: ad-m/github-push-action@master
@@ -49,8 +57,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           
 
-      - name: Upload WsaPatch.dll
-        uses: actions/upload-artifact@v3
-        with:
-          name: WsaPatch-build
-          path: .\WsaPatch\build
