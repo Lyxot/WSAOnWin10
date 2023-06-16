@@ -30,12 +30,15 @@ jobs:
         run: |
           cd WSAPatch
           mkdir build
-          cmake -G "Visual Studio 17 2022" -A x64 -B build   
+          cmake -G "Visual Studio 17 2022" -A x64 -B build
+          
       - name: Build Release
-        run: cmake --build build --config Release --verbose
+        run: |
+          cd WSAPatch
+          cmake --build build --config Release --verbose
 
       - name: Upload WsaPatch.dll
         uses: actions/upload-artifact@v3
         with:
           name: WsaPatch-build
-          path: .\build
+          path: .\WsaPatch\build
