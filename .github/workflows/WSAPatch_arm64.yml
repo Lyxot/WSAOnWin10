@@ -37,6 +37,21 @@ jobs:
           cd WSAPatch
           cmake --build build --config Release --verbose
 
+      - name: commit
+        run: |
+          copy WSAPatch/build/Release/WsaPatch.dll DLLs/arm64
+          rmdir /Q /S WSAPatch
+          git config --global user.email 1169942595@qq.com
+          git config --global user.name A-JiuA
+          git add DLLs/arm64
+          git commit -m "update WSAPatch.dll for arm64"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+
       - name: Upload WsaPatch.dll
         uses: actions/upload-artifact@v3
         with:
