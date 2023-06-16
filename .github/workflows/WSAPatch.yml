@@ -23,13 +23,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Configure
-        run: |
-          cmake -G "Visual Studio 17 2022" -A x64 -B build
-
       - name: Clone Repository
         run: git clone https://github.com/cinit/WSAPatch.git && cd WSAPatch
-      
+   
+      - name: Configure
+        run: |
+          cmake -G "Visual Studio 17 2022" -A x64 -B build   
       - name: Build Release
         run: cmake --build build --config Release --verbose
 
