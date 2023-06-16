@@ -1,0 +1,56 @@
+name: Build WsaPatch.dll for x64
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: .
+  BUILD_CONFIGURATION: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Clone Repository
+        run: git clone https://github.com/cinit/WSAPatch.git
+   
+      - name: Configure
+        run: |
+          cd WSAPatch
+          mkdir build
+          cmake -G "Visual Studio 17 2022" -A x64 -B build
+          
+      - name: Build Release
+        run: |
+          cd WSAPatch
+          cmake --build build --config Release --verbose
+
+      - name: commit
+        run: |
+          copy WSAPatch/build/Release/WsaPatch.dll DLLs/x64
+          rmdir /Q /S WSAPatch
+          git config --global user.email 1169942595@qq.com
+          git config --global user.name A-JiuA
+          git add DLLs/x64
+          git commit -m "update WSAPatch.dll for x64"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+
+      - name: Upload WsaPatch.dll
+        uses: actions/upload-artifact@v3
+        with:
+          name: WsaPatch-build
+          path: .\WsaPatch\build
