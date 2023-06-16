@@ -48,6 +48,7 @@ jobs:
           remove-item WSAPatch -Recurse -Force
           git config --global user.email 1169942595@qq.com
           git config --global user.name A-JiuA
+          git pull
           git add DLLs/x64
           git commit -m "update WsaPatch.dll for x64"
           
