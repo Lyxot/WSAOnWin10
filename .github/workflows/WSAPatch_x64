@@ -1,4 +1,4 @@
-name: Build WsaPatch.dll for arm64
+name: Build WsaPatch.dll for x64
 
 on:
   workflow_dispatch:
