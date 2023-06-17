@@ -1,4 +1,4 @@
-name: Build WsaPatch.dll for arm64
+name: Build WsaPatch.dll
 
 on:
   workflow_dispatch:
@@ -30,16 +30,15 @@ jobs:
       - name: Check Update
         id: check
         run: |
-          export UPDATE_DATE1=$(git log -1 --date=unix --pretty=format:'%cd' DLLs/x64/WsaPatch.dll )
-          export UPDATE_DATE2=$(git log -1 --date=unix --pretty=format:'%cd' DLLs/arm64/WsaPatch.dll )
+          export UPDATE_DATE1=$(git log -1 --date=unix --pretty=format:'%cd' DLLs/x64/WsaPatch.dll) UPDATE_DATE2=$(git log -1 --date=unix --pretty=format:'%cd' DLLs/arm64/WsaPatch.dll)
           cd WSAPatch
-          export UPDATE_DATE3=$(git log -1 --date=unix --pretty=format:'%cd' DLLs/arm64/WsaPatch.dll )
-          if [ $UPDATE_DATE1 -gt $UPDATE_DATE3 ];then echo "is_update=no" >> "$GITHUB_OUTPUT";elif [ $UPDATE_DATE2 -gt $UPDATE_DATE3 ];then echo "is_update=no" >> "$GITHUB_OUTPUT";else echo "is_update=yes" >> "$GITHUB_OUTPUT";fi
+          export UPDATE_DATE3=$(git log -1 --date=unix --pretty=format:'%cd')
+          if [ $UPDATE_DATE3 -gt $UPDATE_DATE1 ];then echo "is_update=yes" >> "$GITHUB_OUTPUT";elif [ $UPDATE_DATE3 -gt $UPDATE_DATE2 ];then echo "is_update=yes" >> "$GITHUB_OUTPUT";else echo "is_update=no" >> "$GITHUB_OUTPUT";fi
           
 
   build:
     needs: check_update
-    if: needs.check_update.outputs.is_update == 'no'
+    # if: needs.check_update.outputs.is_update == 'yes'
     runs-on: windows-latest
 
     steps:
