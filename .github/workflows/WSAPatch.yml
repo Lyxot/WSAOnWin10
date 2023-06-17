@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [ "master" ]
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 */3 * * *'
 
 env:
   # Path to the solution file relative to the root of the project.
@@ -15,7 +15,7 @@ env:
   BUILD_CONFIGURATION: Release
 
 jobs:
-  check_update:
+  check:
     runs-on: ubuntu-latest
     outputs:
       is_update: ${{ steps.check.outputs.is_update }}
@@ -37,8 +37,8 @@ jobs:
           
 
   build:
-    needs: check_update
-    # if: needs.check_update.outputs.is_update == 'yes'
+    needs: check
+    if: needs.check.outputs.is_update == 'yes'
     runs-on: windows-latest
 
     steps:
