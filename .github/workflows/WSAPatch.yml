@@ -1,0 +1,100 @@
+name: Build WsaPatch.dll for arm64
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  schedule:
+    - cron: '0 * * * *'
+
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: .
+  BUILD_CONFIGURATION: Release
+
+jobs:
+  check_update:
+    runs-on: ubuntu-latest
+    outputs:
+      is_update: ${{ steps.check.outputs.is_update }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Clone Repository
+        run: |
+          git clone https://github.com/cinit/WSAPatch.git
+
+      - name: Check Update
+        id: check
+        run: |
+          export UPDATE_DATE1=$(git log -1 --date=unix --pretty=format:'%cd' DLLs/x64/WsaPatch.dll )
+          export UPDATE_DATE2=$(git log -1 --date=unix --pretty=format:'%cd' DLLs/arm64/WsaPatch.dll )
+          cd WSAPatch
+          export UPDATE_DATE3=$(git log -1 --date=unix --pretty=format:'%cd' DLLs/arm64/WsaPatch.dll )
+          if [ $UPDATE_DATE1 -gt $UPDATE_DATE3 ];then echo "is_update=no" >> "$GITHUB_OUTPUT";elif [ $UPDATE_DATE2 -gt $UPDATE_DATE3 ];then echo "is_update=no" >> "$GITHUB_OUTPUT";else echo "is_update=yes" >> "$GITHUB_OUTPUT";fi
+          
+
+  build:
+    needs: check_update
+    if: needs.check_update.outputs.is_update == 'no'
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Clone Repository
+        run: |
+          new-item WSAPatch -type "directory"
+          cd WSAPatch
+          git clone https://github.com/cinit/WSAPatch.git WSAPatch_x64
+          git clone https://github.com/cinit/WSAPatch.git WSAPatch_arm64
+
+      - name: Configure x64
+        run: |
+          cd WSAPatch/WSAPatch_x64
+          mkdir build
+          cmake -G "Visual Studio 17 2022" -A x64 -B build
+          
+      - name: Build Release x64
+        run: |
+          cd WSAPatch/WSAPatch_x64
+          cmake --build build --config Release --verbose
+          copy build/Release/WsaPatch.dll ../../DLLs/x64  
+
+      - name: Configure arm64
+        run: |
+          cd WSAPatch/WSAPatch_arm64
+          mkdir build
+          cmake -G "Visual Studio 17 2022" -A arm64 -B build
+          
+      - name: Build Release arm64
+        run: |
+          cd WSAPatch/WSAPatch_arm64
+          cmake --build build --config Release --verbose
+          copy build/Release/WsaPatch.dll ../../DLLs/arm64
+
+      - name: Upload WsaPatch.dll
+        uses: actions/upload-artifact@v3
+        with:
+          name: WsaPatch-build
+          path: .\WsaPatch
+          
+      - name: commit
+        run: |
+          remove-item WSAPatch -Recurse -Force
+          git config --global user.email 1169942595@qq.com
+          git config --global user.name A-JiuA
+          git pull
+          git add DLLs
+          git commit -m "update WsaPatch.dll"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+
