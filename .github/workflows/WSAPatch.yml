@@ -4,8 +4,12 @@ on:
   workflow_dispatch:
   push:
     branches: [ "master" ]
+    paths:
+      - .github/workflow/WSAPatch.yml
   pull_request:
     branches: [ "master" ]
+    paths:
+      - .github/workflow/WSAPatch.yml
   schedule:
     - cron: '0 */3 * * *'
 
@@ -87,7 +91,6 @@ jobs:
           remove-item WSAPatch -Recurse -Force
           git config --global user.email 1169942595@qq.com
           git config --global user.name A-JiuA
-          git pull
           git add DLLs
           git commit -m "update WsaPatch.dll"
           
