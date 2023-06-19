@@ -1,0 +1,32 @@
+name: Inject WsaPatch.dll
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+    paths:
+      - .github/original_dll
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - .github/original_dll
+  schedule:
+    - cron: '0 */3 * * *'
+jobs:
+  inject:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Configure
+        run: |
+          mkdir build
+          cmake -S "scripts\DllInject" -B "scripts\DllInject\build" -G "Visual Studio 15 2017 Win64"
+      - name: Build
+        run: cmake --build "scripts\DllInject\build"
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: .
+          
