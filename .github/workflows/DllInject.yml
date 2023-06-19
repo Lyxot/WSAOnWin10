@@ -20,7 +20,7 @@ jobs:
       - name: Configure
         run: |
           mkdir build
-          cmake -S "scripts\DllInject" -B "scripts\DllInject\build" -G "Visual Studio 17 2022 Win64"
+          cmake -S "scripts\DllInject" -B "scripts\DllInject\build" -G "Visual Studio 17 2022" -A x64
       - name: Build
         run: cmake --build "scripts\DllInject\build"
       - name: Upload
