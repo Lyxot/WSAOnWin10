@@ -1,0 +1,5 @@
+Arch: x64
+Version: Insider Preview
+Build: 25393
+Download URL: https://software.download.prss.microsoft.com/dbazure/Windows11__InsiderPreview_EnterpriseVL_x64_zh-cn_25393.iso?t=6ed9adc9-7a69-44cf-bb60-6d24da6099cf&e=1687245869&h=b1308600e559d95d3b1402dc6f523c33e785833c6c4ad188a549b3bdbed7954a
+Format: .iso
