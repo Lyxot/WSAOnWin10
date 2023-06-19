@@ -1,0 +1,5 @@
+Arch: x64
+Version: Insider Preview
+Build: 23481
+Download URL: https://software.download.prss.microsoft.com/dbazure/Windows11_InsiderPreview_EnterpriseVL_x64_zh-cn_23481.iso?t=a3c84adf-6382-4d1a-a485-8f1e5623ce16&e=1687246873&h=92a08283e8594cbc652cf061946324c501e669bedbd6f13556d55e1748036b26
+Format: .iso
