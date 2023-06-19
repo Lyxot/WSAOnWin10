@@ -28,8 +28,10 @@ on:
         type: choice
         options:
           - .iso
-          - .zip
+          - .wim
+          - .esd
           - .vhdx
+          - .zip
         default: .iso
       upload:
         description: 'Upload'
@@ -99,13 +101,25 @@ jobs:
           wimextract $file_path 1 /Windows/System32/winhttp.dll --dest-dir=dll
           cp dll/* ../original_dll/$ARCH/$BUILD
           sudo umount iso
+
+      - name: WIM/ESD
+        if: env.format in ['.wim','.esd']
+        run: |
+          cd tmp
+          mkdir dll
+          wimextract Windows$FORMAT 1 /Windows/System32/icu.dll --dest-dir=dll
+          wimextract Windows$FORMAT 1 /Windows/System32/winhttp.dll --dest-dir=dll
+          cp dll/* ../original_dll/$ARCH/$BUILD
       
       - name: ZIP
         if: env.FORMAT == '.zip'
         run: |
           cd tmp
           mkdir zip
-          unzip Windows.zip
+          mkdir iso
+          mkdir dll
+          python3 ../scripts/DownloadDll_zip.py
+          cp dll/* ../original_dll/$ARCH/$BUILD
 
       - name: Creat Artifact
         run: |
