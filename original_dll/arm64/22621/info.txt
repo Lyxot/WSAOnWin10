@@ -1,0 +1,5 @@
+Arch: arm64
+Version: 22H2
+Build: 22621
+Download URL: https://www.123pan.com/s/sa49-W7Ht
+Format: iso
