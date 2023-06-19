@@ -93,6 +93,12 @@ jobs:
           cd tmp
           mkdir iso
           sudo mount -o loop Windows.iso iso
+          export file_path=$(ls iso/sources/install.*)
+          mkdir dll
+          wimextract $file_path 1 /Windows/System32/icu.dll --dest-dir=dll
+          wimextract $file_path 1 /Windows/System32/winhttp.dll --dest-dir=dll
+          cp dll/* ../original_dll/$ARCH/$BUILD
+          sudo umount iso
       
       - name: ZIP
         if: env.FORMAT == '.zip'
@@ -101,22 +107,29 @@ jobs:
           mkdir zip
           unzip Windows.zip
 
-      - name: Delete tmp
-        run: rm -rf tmp
-      
+      - name: Creat Artifact
+        run: |
+          cd tmp
+          mkdir artifact
+          cp ../original_dll/$ARCH/$BUILD/* artifact
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: original_dll
-          path: original_dll/env.ARCH/env.BUILD
+          path: tmp/artifact
 
+      - name: Delete tmp
+        run: |
+          rm -rf tmp
+      
       - name: commit
         if: env.UPLOAD == true
         run: |
           git config --global user.email 1169942595@qq.com
           git config --global user.name A-JiuA
           git add original_dll/$ARCH/$BUILD
-          git commit -m "Upload original dlls from $VERSION $ARCH (build $BUILD)"
+          git commit -m "Upload original dlls from $VERSION $ARCH build $BUILD"
           
       - name: Push changes
         if: env.UPLOAD == true
