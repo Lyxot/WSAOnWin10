@@ -65,6 +65,9 @@ jobs:
           echo "Build: $BUILD"
           echo "Download URL: $URL"
           echo "Format: $FORMAT"
+          mkdir original_dll/ 2>/dev/null || :
+          mkdir original_dll/x64 2>/dev/null || :
+          mkdir original_dll/arm64 2>/dev/null || :
           mkdir original_dll/$ARCH/$BUILD
           mkdir tmp
           cd tmp
