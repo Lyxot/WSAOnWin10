@@ -38,6 +38,14 @@ on:
         required: true
         type: boolean
         default: false
+      email:
+        description: 'Email'
+        required: true
+        type: string
+      username:
+        description: 'Username'
+        required: true
+        type: string
 
 env:
   ARCH: ${{ inputs.arch }}
@@ -46,6 +54,8 @@ env:
   URL: ${{ inputs.url }}
   FORMAT: ${{ inputs.format }}
   UPLOAD: ${{ inputs.upload }}
+  EMAIL: ${{ inputs.email }}
+  USERNAME: ${{ inputs.username }}
 
 jobs:
   download:
@@ -146,8 +156,8 @@ jobs:
       - name: commit
         if: ${{ inputs.upload }} == true
         run: |
-          git config --global user.email 1169942595@qq.com
-          git config --global user.name A-JiuA
+          git config --global user.email $EMAIL
+          git config --global user.name $USERNAME
           git add original_dll/$ARCH/$BUILD
           git commit -m "Upload original dlls from $VERSION $ARCH build $BUILD"
           git pull
