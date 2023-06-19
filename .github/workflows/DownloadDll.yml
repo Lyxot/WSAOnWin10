@@ -30,7 +30,7 @@ on:
           - .iso
           - .zip
           - .vhdx
-        default: iso
+        default: .iso
       upload:
         description: 'Upload'
         required: true
@@ -65,6 +65,7 @@ jobs:
 
       - name: Download
         run: |
+          echo $ARCH $VERSION $BUILD $URL $FORMAT
           python scripts/DownloadDll.py $ARCH $VERSION $BUILD $URL $FORMAT
 
       - name: commit

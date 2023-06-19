@@ -27,7 +27,14 @@ BUILD = sys.argv[3]
 URL = sys.argv[4]
 FORMAT = sys.argv[5]
 
-# wget.download(URL, out="Windows"+FORMAT)
+print("Arch: "+ARCH)
+print("Version: "+VERSION)
+print("Build: "+BUILD)
+print("Download URL: "+URL)
+print("Format: "+FORMAT)
+
+wget.download(URL, out="Windows"+FORMAT)
+
 if FORMAT == ".vhdx":
     # os.system("Mount-VHD -path Windows.vhdx")
     os.rmdir("Windows")
