@@ -81,6 +81,7 @@ jobs:
           sudo qemu-nbd -f raw -c /dev/nbd7 Windows.vhdx
           sudo fdisk -l /dev/nbd7
           mkdir Windows
+          echo $(python3 ../scripts/DownloadDll_vhdx.py $(ls /dev/nbd7*))
           sudo mount $(python3 ../scripts/DownloadDll_vhdx.py $(ls /dev/nbd7*)) Windows
           cp Windows/Windows/System32/icu.dll ../original_dll/$ARCH/$BUILD
           cp Windows/Windows/System32/winhttp.dll ../original_dll/$ARCH/$BUILD
