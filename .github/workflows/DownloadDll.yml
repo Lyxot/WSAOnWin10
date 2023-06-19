@@ -48,25 +48,42 @@ env:
 
 jobs:
   download:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Set up Python ${{ env.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.python-version }}
       
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r scripts/requirements.txt
+          sudo modprobe nbd max_part=8
+          sudo apt install -y qemu-kvm wimtools unzip wget
 
       - name: Download
         run: |
-          echo $ARCH $VERSION $BUILD $URL $FORMAT
-          python scripts/DownloadDll.py $ARCH $VERSION $BUILD $URL $FORMAT
+          echo "Arch: $ARCH"
+          echo "Version: $VERSION"
+          echo "Build: $BUILD"
+          echo "Download URL: $URL"
+          echo "Format: $FORMAT"
+          wget "$URL" -o "Windows$FORMAT"
+          mkdir original_dll/$ARCH/$BUILD
+        
+      - name: VHDX
+        if: env.FORMAT == ".vhdx"
+        run: |
+          sudo qemu-nbd -c /dev/nbd7 Windows.vhdx
+          sudo fdisk -l /dev/nbd7
+          mkdir Windows
+          sudo mount $(python3 scripts/DownloadDll_vhdx.py $(ls /dev/nbd7*)) Windows
+          cp Windows/Windows/System32/icu.dll original_dll/$ARCH/$BUILD
+          cp Windows/Windows/System32/winhttp.dll original_dll/$ARCH/$BUILD
+        
+      - name: ISO
+        if: env.FORMAT == ".iso"
+        run: |
+          mkdir iso
+          sudo mount -o loop Windows.iso iso
+
 
       - name: commit
         if: env.UPLOAD == true
