@@ -69,7 +69,7 @@ jobs:
           mkdir original_dll/$ARCH/$BUILD
         
       - name: VHDX
-        if: env.FORMAT == ".vhdx"
+        if: env.FORMAT == '.vhdx'
         run: |
           sudo qemu-nbd -c /dev/nbd7 Windows.vhdx
           sudo fdisk -l /dev/nbd7
@@ -79,7 +79,7 @@ jobs:
           cp Windows/Windows/System32/winhttp.dll original_dll/$ARCH/$BUILD
         
       - name: ISO
-        if: env.FORMAT == ".iso"
+        if: env.FORMAT == '.iso'
         run: |
           mkdir iso
           sudo mount -o loop Windows.iso iso
