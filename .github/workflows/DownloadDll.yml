@@ -143,7 +143,7 @@ jobs:
           rm -rf tmp
       
       - name: commit
-        if: env.UPLOAD == true
+        if: ${{ inputs.upload }} == true
         run: |
           git config --global user.email 1169942595@qq.com
           git config --global user.name A-JiuA
@@ -151,7 +151,7 @@ jobs:
           git commit -m "Upload original dlls from $VERSION $ARCH build $BUILD"
           
       - name: Push changes
-        if: env.UPLOAD == true
+        if: ${{ inputs.upload }} == true
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
