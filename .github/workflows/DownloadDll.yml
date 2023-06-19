@@ -66,7 +66,7 @@ jobs:
           echo "Build: $BUILD"
           echo "Download URL: $URL"
           echo "Format: $FORMAT"
-          mkdir original_dll/$ARCH/$BUILD\
+          mkdir original_dll/$ARCH/$BUILD
           mkdir tmp
           cd tmp
           wget "$URL" -o "Windows$FORMAT"
