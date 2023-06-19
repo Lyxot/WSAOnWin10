@@ -78,9 +78,10 @@ jobs:
         if: env.FORMAT == '.vhdx'
         run: |
           cd tmp
-          sudo qemu-nbd -f raw -c /dev/nbd7 Windows.vhdx
+          sudo qemu-nbd -f vhdx -c /dev/nbd7 Windows.vhdx
           sudo fdisk -l /dev/nbd7
           mkdir Windows
+          ls /dev/nbd7*
           sudo mount /dev/nbd7p3 Windows
           cp Windows/Windows/System32/icu.dll ../original_dll/$ARCH/$BUILD
           cp Windows/Windows/System32/winhttp.dll ../original_dll/$ARCH/$BUILD
