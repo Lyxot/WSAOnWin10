@@ -72,7 +72,7 @@ jobs:
           mkdir tmp
           cd tmp
           wget "$URL" -o "Windows$FORMAT"
-          ls
+          ll -lh
         
       - name: VHDX
         if: env.FORMAT == '.vhdx'
@@ -84,6 +84,7 @@ jobs:
           sudo mount $(python3 ../scripts/DownloadDll_vhdx.py $(ls /dev/nbd7*)) Windows
           cp Windows/Windows/System32/icu.dll ../original_dll/$ARCH/$BUILD
           cp Windows/Windows/System32/winhttp.dll ../original_dll/$ARCH/$BUILD
+          sudo umount Windows
         
       - name: ISO
         if: env.FORMAT == '.iso'
