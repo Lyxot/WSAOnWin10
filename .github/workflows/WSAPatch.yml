@@ -84,7 +84,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: WsaPatch-build
-          path: .\WsaPatch
+          path: DLLs
           
       - name: commit
         run: |
