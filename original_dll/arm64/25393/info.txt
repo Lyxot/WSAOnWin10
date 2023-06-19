@@ -1,0 +1,5 @@
+Arch: arm64
+Version: Insider Preview
+Build: 25393
+Download URL: https://software.download.prss.microsoft.com/dbazure/Windows11__InsiderPreview_Client_ARM64_en-us_25393.VHDX?t=f2fd4249-b1c2-4d38-83f5-d3089817dbe6&e=1687224321&h=033a959490a019ce5d2db8b0cef1734922cefa01a6f357149fc67de26ac1d120
+Format: .vhdx
