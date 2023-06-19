@@ -56,6 +56,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo modprobe nbd max_part=8
+          sudo apt update
           sudo apt install -y qemu-kvm wimtools unzip wget
 
       - name: Download
@@ -65,25 +66,44 @@ jobs:
           echo "Build: $BUILD"
           echo "Download URL: $URL"
           echo "Format: $FORMAT"
+          mkdir original_dll/$ARCH/$BUILD\
+          mkdir tmp
+          cd tmp
           wget "$URL" -o "Windows$FORMAT"
-          mkdir original_dll/$ARCH/$BUILD
         
       - name: VHDX
         if: env.FORMAT == '.vhdx'
         run: |
+          cd tmp
           sudo qemu-nbd -c /dev/nbd7 Windows.vhdx
           sudo fdisk -l /dev/nbd7
           mkdir Windows
           sudo mount $(python3 scripts/DownloadDll_vhdx.py $(ls /dev/nbd7*)) Windows
-          cp Windows/Windows/System32/icu.dll original_dll/$ARCH/$BUILD
-          cp Windows/Windows/System32/winhttp.dll original_dll/$ARCH/$BUILD
+          cp Windows/Windows/System32/icu.dll ../original_dll/$ARCH/$BUILD
+          cp Windows/Windows/System32/winhttp.dll ../original_dll/$ARCH/$BUILD
         
       - name: ISO
         if: env.FORMAT == '.iso'
         run: |
+          cd tmp
           mkdir iso
           sudo mount -o loop Windows.iso iso
+      
+      - name: ZIP
+        if: env.FORMAT == '.zip'
+        run: |
+          cd tmp
+          mkdir zip
+          unzip Windows.zip
 
+      - name: Delete tmp
+        run: rm -rf tmp
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: original_dll
+          path: original_dll
 
       - name: commit
         if: env.UPLOAD == true
