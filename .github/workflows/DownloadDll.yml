@@ -108,7 +108,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: original_dll
-          path: original_dll
+          path: original_dll/env.ARCH/env.BUILD
 
       - name: commit
         if: env.UPLOAD == true
