@@ -42,7 +42,7 @@ jobs:
 
   build:
     needs: check
-    if: needs.check.outputs.is_update == 'yes'
+    if: needs.check.outputs.is_update == 'yes' || github.event_name == 'workflow_dispatch'
     runs-on: windows-latest
 
     steps:
@@ -93,6 +93,7 @@ jobs:
           git config --global user.name A-JiuA
           git add DLLs
           git commit -m "update WsaPatch.dll"
+          git pull
           
       - name: Push changes
         uses: ad-m/github-push-action@master
