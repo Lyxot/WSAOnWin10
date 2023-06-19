@@ -12,7 +12,7 @@ on:
           - arm64
       version:
         description: 'Version(e.g. 22H2)'
-        required: true
+        required: false
         type: string
       build:
         description: 'Build(e.g. 22621)'
@@ -65,7 +65,7 @@ jobs:
 
       - name: Download
         run: |
-          python DownloadDll.py $ARCH $VERSION $BUILD $URL $FORMAT
+          python scripts/DownloadDll.py $ARCH $VERSION $BUILD $URL $FORMAT
 
       - name: commit
         if: env.UPLOAD == true
