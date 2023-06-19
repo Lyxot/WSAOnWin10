@@ -71,6 +71,7 @@ jobs:
           mkdir original_dll/x64 2>/dev/null || :
           mkdir original_dll/arm64 2>/dev/null || :
           mkdir original_dll/$ARCH/$BUILD
+          echo "Arch: $ARCH\nVersion: $VERSION\nBuild: $BUILD\nDownload URL: $URL\nFormat: $FORMAT" > original_dll/$ARCH/$BUILD/info.txt
           mkdir tmp
           cd tmp
           curl -o "Windows$FORMAT" "$URL"
