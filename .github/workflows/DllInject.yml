@@ -10,8 +10,7 @@ on:
     branches: [ "master" ]
     paths:
       - .github/original_dll
-  schedule:
-    - cron: '0 */3 * * *'
+      
 jobs:
   inject:
     runs-on: windows-latest
