@@ -103,7 +103,7 @@ jobs:
           sudo umount iso
 
       - name: WIM/ESD
-        if: env.format in ['.wim','.esd']
+        if: env.format == '.wim' or env.format == '.esd'
         run: |
           cd tmp
           mkdir dll
