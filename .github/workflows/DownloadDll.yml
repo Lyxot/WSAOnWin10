@@ -56,7 +56,7 @@ jobs:
         run: |
           sudo modprobe nbd max_part=8
           sudo apt update
-          sudo apt install -y qemu-kvm wimtools unzip wget
+          sudo apt install -y qemu-kvm wimtools unzip curl
 
       - name: Download
         run: |
@@ -71,8 +71,8 @@ jobs:
           mkdir original_dll/$ARCH/$BUILD
           mkdir tmp
           cd tmp
-          wget "$URL" -o "Windows$FORMAT"
-          ll -lh
+          curl -o "Windows$FORMAT" "$URL"
+          ls -lh
         
       - name: VHDX
         if: env.FORMAT == '.vhdx'
