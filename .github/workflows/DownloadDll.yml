@@ -44,7 +44,6 @@ env:
   URL: ${{ inputs.url }}
   FORMAT: ${{ inputs.format }}
   UPLOAD: ${{ inputs.upload }}
-  python-version: '3.10'
 
 jobs:
   download:
@@ -70,12 +69,13 @@ jobs:
           mkdir tmp
           cd tmp
           wget "$URL" -o "Windows$FORMAT"
+          ls
         
       - name: VHDX
         if: env.FORMAT == '.vhdx'
         run: |
           cd tmp
-          sudo qemu-nbd -c /dev/nbd7 Windows.vhdx
+          sudo qemu-nbd -f raw -c /dev/nbd7 Windows.vhdx
           sudo fdisk -l /dev/nbd7
           mkdir Windows
           sudo mount $(python3 scripts/DownloadDll_vhdx.py $(ls /dev/nbd7*)) Windows
