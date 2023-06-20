@@ -19,7 +19,7 @@ jobs:
       - name: Clone Repository
         run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
 
-      - name: Setup Python 🏭
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           check-latest: true
@@ -30,7 +30,7 @@ jobs:
         run: |
           pip3 install -r MagiskOnWSALocal/scripts/requirements.txt
           sudo apt update
-          sudo apt install -y 7zip
+          sudo apt install -y 7zip lzip patchelf e2fsprogs python3 aria2 attr unzip whiptail qemu-utils p7zip-full python3-venv wine winetricks
 
       - name: Build WSA ${{ matrix.arch }} With ${{ matrix.root-sol }} ROOT and ${{ matrix.gapps-brand }} GAPPS
         run: |
