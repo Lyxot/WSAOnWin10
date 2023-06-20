@@ -40,9 +40,9 @@ jobs:
 
       - name: Copy
         run: |
-          echo $BUILD_X64 $BUILD_ARM64
-          Copy-Item -Path original_dll/x64/$BUILD_X64/*.dll -Destination DLLs/x64 -Force
-          Copy-Item -Path original_dll/arm64/$BUILD_ARM64/*.dll -Destination DLLs/arm64 -Force
+          echo ${{ env.BUILD_X64 }} ${{ env.BUILD_ARM64 }}
+          Copy-Item -Path original_dll/x64/${{ env.BUILD_X64 }}/*.dll -Destination DLLs/x64 -Force
+          Copy-Item -Path original_dll/arm64/${{ env.BUILD_ARM64 }}/*.dll -Destination DLLs/arm64 -Force
 
       - name: Inject
         run: |
