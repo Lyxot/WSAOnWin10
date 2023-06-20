@@ -28,7 +28,7 @@ jobs:
         
       - name: Install Dependencies
         run: |
-          pip3 install MagiskOnWSALocal/scripts/requirements.txt
+          pip3 install -r MagiskOnWSALocal/scripts/requirements.txt
           sudo apt update
           sudo apt install -y 7zip
 
