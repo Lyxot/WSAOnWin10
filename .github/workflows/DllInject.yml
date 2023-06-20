@@ -5,11 +5,11 @@ on:
   push:
     branches: [ "master" ]
     paths:
-      - .github/original_dll
+      - .github/original_dll/*/*
   pull_request:
     branches: [ "master" ]
     paths:
-      - .github/original_dll
+      - .github/original_dll/*/*
 
 jobs:
   check:
