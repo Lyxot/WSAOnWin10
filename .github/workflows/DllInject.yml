@@ -1,4 +1,4 @@
-name: Inject WsaPatch.dll
+name: Inject Dll Files
 
 on:
   workflow_dispatch:

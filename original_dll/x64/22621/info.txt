@@ -1,5 +1,0 @@
-Arch: x64
-Version: 22H2
-Build: 22621
-Download URL: https://software.download.prss.microsoft.com/dbazure/Win11_22H2_English_x64v2.iso?t=e9252398-6c08-4177-a8ad-1a2d3d4adbf6&e=1687237782&h=94b72dbd3c99bef240206005c56dd881b1571d376dfd1529bbabe3f8616d2a47
-Format: .iso
