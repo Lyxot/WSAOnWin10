@@ -12,20 +12,58 @@ on:
       - .github/original_dll
 
 jobs:
-  inject:
-    runs-on: windows-latest
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      BUILD_X64: ${{ steps.output.outputs.BUILD_X64 }}
+      BUILD_ARM64: ${{ steps.output.outputs.BUILD_ARM64 }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Configure
+      
+      - name: Output
+        id: output
         run: |
-          mkdir scripts\DllInject\build
-          cmake -S "scripts\DllInject" -B "scripts\DllInject\build" -G "Visual Studio 16 2019" -A "x64"
-      - name: Build
-        run: cmake --build "scripts\DllInject\build"
-      - name: Upload
+          echo "BUILD_X64=$(ls original_dll/x64/ | sort -rn | awk 'NR==1')" >> "$GITHUB_OUTPUT"
+          echo "BUILD_ARM64=$(ls original_dll/arm64/ | sort -rn | awk 'NR==1')" >> "$GITHUB_OUTPUT"
+
+  inject:
+    needs: check
+    runs-on: windows-latest
+    env:
+      BUILD_X64: ${{ needs.check.outputs.BUILD_X64 }}
+      BUILD_ARM64: ${{ needs.check.outputs.BUILD_ARM64 }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Copy
+        run: |
+          Copy-Item -Path original_dll/x64/$BUILD_X64/*.dll -Destination DLLs/x64 -Force
+          Copy-Item -Path original_dll/arm64/$BUILD_ARM64/*.dll -Destination DLLs/arm64 -Force
+
+      - name: Inject
+        run: |
+          ./scripts/DllInject.exe "DLLs/x64/icu.dll" "WsaPatch.dll"
+          ./scripts/DllInject.exe "DLLs/arm64/icu.dll" "WsaPatch.dll"
+
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: build
-          path: .
+          name: DLLs
+          path: DLLs/
+
+      - name: Commit
+        run: |
+          git config --global user.email 1169942595@qq.com
+          git config --global user.name A-JiuA
+          git add DLLs
+          git commit -m "update icu.dll and winhttp.dll"
+          git pull
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           
