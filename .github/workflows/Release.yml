@@ -73,7 +73,7 @@ jobs:
       - name: Merge language resource
         shell: pwsh
         run: |
-          cd ./output/${{ steps.name.outputs.foldername }}
+          cd "./output/${{ steps.name.outputs.foldername }}"
           $ProcMakePri = Start-Process pwsh.exe -PassThru -NoNewWindow -Args "-ExecutionPolicy Bypass -File MakePri.ps1"
           $ProcMakePri.WaitForExit()
 
