@@ -62,17 +62,18 @@ jobs:
           path: ./output/
           name: WSA_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
 
+      - id: name
+        shell: bash
+        run: echo "foldername=$(ls output)" >> $GITHUB_OUTPUT
+
       - name: Copy makepri from WindowsSDK
         id: copy
-        run: |
-          set dsl $(Get-ChildItem output -Filter * | Select-Object -First 1 -Expand Name)
-          cp -Force "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makepri.exe" "./output/$dst"
-          "foldername=$dst" >> $env:GITHUB_OUTPUT
-        
+        run: cp -Force "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makepri.exe" "./output/${{ steps.name.outputs.foldername }}"
+
       - name: Merge language resource
         shell: pwsh
         run: |
-          cd ./output/${{ steps.copy.outputs.foldername }}
+          cd ./output/${{ steps.name.outputs.foldername }}
           $ProcMakePri = Start-Process pwsh.exe -PassThru -NoNewWindow -Args "-ExecutionPolicy Bypass -File MakePri.ps1"
           $ProcMakePri.WaitForExit()
 
@@ -84,7 +85,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.copy.outputs.foldername }}
+          name: ${{ steps.name.outputs.foldername }}
           path: output
 
   upload:
