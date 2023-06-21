@@ -82,7 +82,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: WSA_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
+          name: WSA_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }}_1
           path: output
 
   upload:
