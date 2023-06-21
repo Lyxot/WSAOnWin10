@@ -67,7 +67,7 @@ jobs:
         run: |
           set dsl $(Get-ChildItem output -Filter * | Select-Object -First 1 -Expand Name)
           cp -Force "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makepri.exe" "./output/$dst"
-          echo $dst >> $env:GITHUB_OUTPUT
+          echo "foldername=$dst" >> $env:GITHUB_OUTPUT
         
       - name: Merge language resource
         shell: pwsh
