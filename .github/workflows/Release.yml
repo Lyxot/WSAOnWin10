@@ -64,12 +64,13 @@ jobs:
 
       - name: Copy makepri from WindowsSDK
         run: |
-          cp -Force "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makepri.exe" ".\output\*\"
+          $dst = Get-ChildItem output -Filter * | Select-Object -First 1 -Expand FullName
+          cp -Force "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makepri.exe" $dst
         
       - name: Merge language resource
         shell: pwsh
         run: |
-          cd ".\output\*\"
+          cd $dst
           $ProcMakePri = Start-Process pwsh.exe -PassThru -NoNewWindow -Args "-ExecutionPolicy Bypass -File MakePri.ps1"
           $ProcMakePri.WaitForExit()
           
@@ -95,7 +96,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: ./output/
-          name: WSA_x64_none_none
       
       - name: test
         run: ls output
