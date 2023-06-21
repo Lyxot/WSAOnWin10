@@ -102,7 +102,7 @@ jobs:
 
       - name: Get Artifacts Name
         id: result
-        uses: MichaelMelena/list-artifacts@v1.01
+        uses: MichaelMelena/list-artifacts@v1
 
       - name: Get Artifact Name
         id: name
@@ -120,4 +120,5 @@ jobs:
         run: |
           echo ${{ steps.result.outputs.artifacts }}
           ls output
+          ls output/${{ steps.name.outputs.foldername0 }}
   
