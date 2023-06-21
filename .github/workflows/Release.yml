@@ -40,7 +40,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: WSA_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
+          name: ${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
           path: MagiskOnWSALocal/output
 
   make-pri:
@@ -60,7 +60,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: ./output/
-          name: WSA_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
+          name: ${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
 
       - id: name
         shell: bash
@@ -80,7 +80,7 @@ jobs:
       - name: Remove unused artifact
         uses: geekyeggo/delete-artifact@v2
         with:
-          name: WSA_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }}
+          name: ${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }}
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
