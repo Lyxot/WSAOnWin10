@@ -28,6 +28,8 @@ jobs:
         run: |
           echo ${{steps.get.outputs.WSA_Build_Version}}
           echo ${{ steps.get_latest_release.outputs.tag_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   build:
     name: Build WSA
     runs-on: ubuntu-latest
