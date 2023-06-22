@@ -77,6 +77,9 @@ jobs:
           $ProcMakePri = Start-Process pwsh.exe -PassThru -NoNewWindow -Args "-ExecutionPolicy Bypass -File MakePri.ps1"
           $ProcMakePri.WaitForExit()
 
+      - name: Compress Files
+        run: 7z a -tzip -mx9 -sdel -r ".\output\${{ steps.name.outputs.foldername }}.zip" ".\output\${{ steps.name.outputs.foldername }}"
+
       - name: Remove unused artifact
         uses: geekyeggo/delete-artifact@v2
         with:
@@ -86,7 +89,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: WSA_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }}
-          path: output
+          path: output/${{ steps.name.outputs.foldername }}.zip
 
   upload:
     needs: make-pri
@@ -100,25 +103,12 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Get Artifacts Name
-        id: result
-        uses: MichaelMelena/list-artifacts@v1
-
-      - name: Get Artifact Name
-        id: name
-        env: 
-          ARTIFACTS_LIST: ${{ steps.result.outputs.artifacts }}
-        run: python3 scripts/get_artifact_name.py
-
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
           path: ./output/
-          name: WSA_x64_none_none
       
       - name: test
         run: |
-          echo ${{ steps.name.outputs.foldername0 }}
           ls output
-          ls output/${{ steps.name.outputs.foldername0 }}
   
