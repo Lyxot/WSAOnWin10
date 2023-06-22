@@ -118,7 +118,6 @@ jobs:
       
       - name: test
         run: |
-          echo ${{ steps.result.outputs.artifacts }}
           echo ${{ steps.name.outputs.foldername0 }}
           ls output
           ls output/${{ steps.name.outputs.foldername0 }}
