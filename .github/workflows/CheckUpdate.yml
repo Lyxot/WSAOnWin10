@@ -1,0 +1,24 @@
+name: Inject Dll Files
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+    paths:
+      - .github/original_dll/*/*
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - .github/original_dll/*/*
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output
+        id: output
+        run: |
+          echo "BUILD_X64=$(ls original_dll/x64/ | sort -rn | awk 'NR==1')" >> "$GITHUB_OUTPUT"
+          echo "BUILD_ARM64=$(ls original_dll/arm64/ | sort -rn | awk 'NR==1')" >> "$GITHUB_OUTPUT"
+
+  

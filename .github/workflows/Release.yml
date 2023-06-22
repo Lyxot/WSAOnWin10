@@ -4,6 +4,29 @@ on:
   workflow_dispatch:
 
 jobs:
+  check:
+    name: Check Update
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repository
+        run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
+      - name: Get Latest Version
+        id: get
+        run: |
+          export WSA_WORK_ENV="ENV"
+          cd MagiskOnWSALocal/scripts
+          result=$(python3 generateWSALinks.py x64 WIF download wsa.zip | grep "WSA Build Version")
+          echo ${result// /_} >> "$GITHUB_OUTPUT"
+      - name: Get Latest Release
+        id: get_latest_release
+        uses: joutvhu/get-release@v1
+        with:
+          latest: true
+          prerelease: true
+      - name: Check Update
+        run: |
+          echo ${{steps.get.outputs.WSA_Build_Version}}
+          echo ${{ steps.get_latest_release.outputs.tag_name }}
   build:
     name: Build WSA
     runs-on: ubuntu-latest
