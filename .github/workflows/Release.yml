@@ -85,7 +85,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.name.outputs.foldername }}
+          name: WSA_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }}
           path: output
 
   upload:
@@ -114,11 +114,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: ./output/
-          name: ${{ steps.name.outputs.foldername0 }}
+          name: WSA_x64_none_none
       
       - name: test
         run: |
           echo ${{ steps.result.outputs.artifacts }}
+          echo ${{ steps.name.outputs.foldername0 }}
           ls output
           ls output/${{ steps.name.outputs.foldername0 }}
   
