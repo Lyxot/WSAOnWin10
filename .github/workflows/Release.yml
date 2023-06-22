@@ -78,7 +78,9 @@ jobs:
           $ProcMakePri.WaitForExit()
 
       - name: Compress Files
-        run: 7z a -tzip -mx9 -sdel -r ".\output\${{ steps.name.outputs.foldername }}.zip" ".\output\${{ steps.name.outputs.foldername }}"
+        run: |
+          cd output
+          7z a -tzip -mx9 -sdel -r "${{ steps.name.outputs.foldername }}.zip" "${{ steps.name.outputs.foldername }}"
 
       - name: Remove unused artifact
         uses: geekyeggo/delete-artifact@v2
@@ -88,7 +90,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: WSA_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }}
+          name: ${{ steps.name.outputs.foldername }}
           path: output/${{ steps.name.outputs.foldername }}.zip
 
   upload:
@@ -107,8 +109,34 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: ./output/
+
+      - name: Get Latest Release
+        id: get_latest_release
+        uses: joutvhu/get-release@v1
+        with:
+          latest: true
+          prerelease: true
       
+      - name: Generate Release Files
+        id: generate_release_files
+        env:
+          LATEST_TAG: ${{ steps.get_latest_release.outputs.tag_name }}
+        run: |
+          mkdir release
+          mv output/*/*.zip release/
+          cd release
+          python3 generate_release.py
+        
       - name: test
         run: |
-          ls output
-  
+          echo ${{ steps.generate_release_files.outputs.version }}
+          echo ${{ steps.generate_release_files.outputs.filename0 }}
+          echo ${{ steps.generate_release_files.outputs.filename7 }}
+
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   if: steps.get_latest_release.outputs.tag_name == ${{ steps.generate_release_files.outputs.version }}
+      #   with:
+      #     body_path: ${{ github.workspace }}-CHANGELOG.txt
+      #   env:
+      #     GITHUB_REPOSITORY: my_gh_org/my_gh_repo
