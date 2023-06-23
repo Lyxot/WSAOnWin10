@@ -29,6 +29,11 @@ jobs:
           prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Echo
+        run: |
+          echo "CURRENT_VERSION=${{ steps.get_latest_release.outputs.tag_name }}"
+          echo "LATEST_VERSION=${{ steps.get.outputs.WSA_Build_Version }}"
+          if [[ ${{ steps.get_latest_release.outputs.tag_name }} != ${{ steps.get.outputs.WSA_Build_Version }} ]];then echo "Need to Update";fi
 
   build:
     name: Build WSA
@@ -63,9 +68,9 @@ jobs:
       - name: Build WSA ${{ matrix.arch }} With ${{ matrix.root-sol }} ROOT and ${{ matrix.gapps-brand }} GAPPS
         run: |
           ./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }}
-          if [[ $(ls output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf output/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
-          if [[ $(ls output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf output/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
-          if [[ $(ls output/) != *${{ needs.check.outputs.latest_version }}* ]];then exit 1;fi
+          if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf ./MagiskOnWSALocal/output/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
+          if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf ./MagiskOnWSALocal/output/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
+          if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then exit 1;fi
           cp DLLs/${{ matrix.arch }}/*.dll MagiskOnWSALocal/output/*/WsaClient/
 
       - name: Upload Artifact
