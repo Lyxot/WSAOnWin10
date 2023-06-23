@@ -6,7 +6,6 @@ last_version=os.getenv('LATEST_TAG')
 file_list = os.listdir('.')
 file_list.sort()
 print(file_list)
-file_list.remove("Changelog.md")
 version = '0.0.0.0'
 for i in file_list:
     cv = i[i.find('_')+1:]
