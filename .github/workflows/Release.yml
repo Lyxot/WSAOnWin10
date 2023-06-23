@@ -163,7 +163,7 @@ jobs:
           mkdir release
           mv output/*/*.zip release/
           cd release
-          python3 generate_release.py
+          python3 ../scripts/generate_release.py
         
       - name: test
         run: |
