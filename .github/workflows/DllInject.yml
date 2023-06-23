@@ -2,14 +2,10 @@ name: Inject Dll Files
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "master" ]
-    paths:
-      - .github/original_dll/*/*
-  pull_request:
-    branches: [ "master" ]
-    paths:
-      - .github/original_dll/*/*
+  workflow_run:
+    workflows: [Download Original Dll files]
+    types:
+      - completed
 
 jobs:
   check:
