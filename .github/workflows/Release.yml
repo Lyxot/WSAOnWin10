@@ -7,6 +7,9 @@ jobs:
   check:
     name: Check Update
     runs-on: ubuntu-latest
+    outputs:
+      latest_version: ${{ steps.get.outputs.WSA_Build_Version }}
+      current_version: ${{ steps.get_latest_release.outputs.tag_name }}
     steps:
       - name: Clone Repository
         run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
@@ -26,12 +29,11 @@ jobs:
           prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Check Update
-        run: |
-          echo ${{steps.get.outputs.WSA_Build_Version}}
-          echo ${{ steps.get_latest_release.outputs.tag_name }}
+
   build:
     name: Build WSA
+    needs: check
+    if: needs.check.outputs.latest_version != needs.check.outputs.current_version
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -61,6 +63,9 @@ jobs:
       - name: Build WSA ${{ matrix.arch }} With ${{ matrix.root-sol }} ROOT and ${{ matrix.gapps-brand }} GAPPS
         run: |
           ./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }}
+          if [[ $(ls output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf output/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
+          if [[ $(ls output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf output/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
+          if [[ $(ls output/) != *${{ needs.check.outputs.latest_version }}* ]];then exit 1;fi
           cp DLLs/${{ matrix.arch }}/*.dll MagiskOnWSALocal/output/*/WsaClient/
 
       - name: Upload Artifact
@@ -142,6 +147,8 @@ jobs:
         with:
           latest: true
           prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Generate Release Files
         id: generate_release_files
