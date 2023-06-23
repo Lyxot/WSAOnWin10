@@ -164,18 +164,18 @@ jobs:
           mv output/*/*.zip release/
           cd release
           python3 ../scripts/generate_release.py
-        
-      - name: test
-        run: |
-          echo ${{ steps.generate_release_files.outputs.version }}
-          echo ${{ steps.generate_release_files.outputs.filename0 }}
-          echo ${{ steps.generate_release_files.outputs.filename7 }}
-          ls release
-
-      # - name: Release
-      #   uses: softprops/action-gh-release@v1
-      #   if: steps.get_latest_release.outputs.tag_name == ${{ steps.generate_release_files.outputs.version }}
-      #   with:
-      #     body_path: ${{ github.workspace }}-CHANGELOG.txt
-      #   env:
-      #     GITHUB_REPOSITORY: my_gh_org/my_gh_repo
+    
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.generate_release_files.outputs.version }}
+          body_path: release/Changelog.md
+          files: |
+            release/${{ steps.generate_release_files.outputs.filename0 }}
+            release/${{ steps.generate_release_files.outputs.filename1 }}
+            release/${{ steps.generate_release_files.outputs.filename2 }}
+            release/${{ steps.generate_release_files.outputs.filename3 }}
+            release/${{ steps.generate_release_files.outputs.filename4 }}
+            release/${{ steps.generate_release_files.outputs.filename5 }}
+            release/${{ steps.generate_release_files.outputs.filename6 }}
+            release/${{ steps.generate_release_files.outputs.filename7 }}
