@@ -170,6 +170,7 @@ jobs:
           echo ${{ steps.generate_release_files.outputs.version }}
           echo ${{ steps.generate_release_files.outputs.filename0 }}
           echo ${{ steps.generate_release_files.outputs.filename7 }}
+          ls release
 
       # - name: Release
       #   uses: softprops/action-gh-release@v1
