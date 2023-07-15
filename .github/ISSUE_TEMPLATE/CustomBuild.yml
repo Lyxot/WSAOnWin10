@@ -1,17 +1,16 @@
 name: Custom Build
 description: Run Actions
-title: "[CustomBuild]: "
+title: "Custom Build"
 labels: ["CustomBuild"]
 body:
   - type: markdown
     attributes:
       value: |
-        Your custom build will be upload in 15 minutes
+        ## Your custom build will be upload in 15 minutes
   - type: dropdown
     id: arch
     attributes:
       label: Arch
-      description: What version of our software are you running?
       options:
         - x64
         - arm64
@@ -26,6 +25,8 @@ body:
         - Release Preview
         - Insider Slow
         - Insider Fast
+    validations:
+      required: true
   - type: dropdown
     id: root_sol
     attributes:
@@ -34,6 +35,8 @@ body:
         - Non-root
         - KernelSU
         - Magisk
+    validations:
+      required: true
   - type: dropdown
     id: magisk_ver
     attributes:
@@ -44,6 +47,8 @@ body:
         - canary
         - debug
         - release
+    validations:
+      required: true
   - type: dropdown
     id: gapps_brand
     attributes:
@@ -52,6 +57,8 @@ body:
         - MindTheGapps
         - OpenGApps
         - Non-GApps
+    validations:
+      required: true
   - type: checkboxes
     id: remove_amazon
     attributes:
