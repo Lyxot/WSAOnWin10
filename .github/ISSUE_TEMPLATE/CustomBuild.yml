@@ -1,0 +1,60 @@
+name: Custom Build
+description: Run Actions
+title: "[CustomBuild]: "
+labels: ["CustomBuild"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Your custom build will be upload in 15 minutes
+  - type: dropdown
+    id: arch
+    attributes:
+      label: Arch
+      description: What version of our software are you running?
+      options:
+        - x64
+        - arm64
+    validations:
+      required: true
+  - type: dropdown
+    id: release_type
+    attributes:
+      label: WSA Release Channel
+      options:
+        - Retail
+        - Release Preview
+        - Insider Slow
+        - Insider Fast
+  - type: dropdown
+    id: root_sol
+    attributes:
+      label: Root solution
+      options:
+        - Non-root
+        - KernelSU
+        - Magisk
+  - type: dropdown
+    id: magisk_ver
+    attributes:
+      label: Magisk Version
+      options:
+        - stable
+        - beta
+        - canary
+        - debug
+        - release
+  - type: dropdown
+    id: gapps_brand
+    attributes:
+      label: GApps brand
+      options:
+        - MindTheGapps
+        - OpenGApps
+        - Non-GApps
+  - type: checkboxes
+    id: remove_amazon
+    attributes:
+      label: Remove Amazon
+      options:
+        - label: Remove Amazon
