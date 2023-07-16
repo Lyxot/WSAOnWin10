@@ -16,6 +16,6 @@ jobs:
       - name: echo
         run: |
           echo "${{ github.event.issue.title }}"
-          echo "${{ github.event.issue.labels }}"
+          echo "${{ github.event.lable.name }}"
           echo "${{ github.event.issue.user.login }}"
           echo "${{ github.event.issue.body }}"
