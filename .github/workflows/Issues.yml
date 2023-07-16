@@ -58,12 +58,40 @@ jobs:
         id: ga_d
         run: python3 scripts/Issues.py "Upload Original Dll File"
 
+  comment_cb_1:
+    needs: get_arg_cb
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment
+        uses: actions-cool/issues-helper@v2.2.1
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello ${{ github.event.issue.user.login }}. Your custom build has started building. Please go to the URL below for more details.
+            > ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
+  
   custom_build:
     needs: get_arg_cb
     uses: A-JiuA/WSAOnWin10/.github/workflows/CustomBuild.yml@master
     with:
       cmd: ${{ needs.get_arg_cb.outputs.arch }}
       arch: ${{ needs.get_arg_cb.outputs.arch }}
+
+  comment_cb_2:
+    needs: custom_build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment
+        uses: actions-cool/issues-helper@v2.2.1
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello ${{ github.event.issue.user.login }}. Your custom WSA build has been built. Please go to the URL below and download the Artifact.  
+            > ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
 
   download_dll:
     needs: get_arg_dd
