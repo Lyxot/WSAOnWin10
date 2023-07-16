@@ -3,10 +3,6 @@ name: Inject Dll Files
 on:
   workflow_call:
   workflow_dispatch:
-  workflow_run:
-    workflows: [Download Original Dll files]
-    types:
-      - completed
 
 jobs:
   check:
