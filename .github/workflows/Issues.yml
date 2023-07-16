@@ -4,15 +4,17 @@ on:
   issues:
     types:
       - opened
+  issue_comment:
+    types:
+      - created
 
 jobs:
   comment:
-    if: github.event_name == 'issues'
+    # if: github.event_name == 'issues'
     runs-on: ubuntu-latest
     steps:
       - name: echo
         run: |
           echo ${{ github.event.issue.title }}
           echo ${{ github.event.issue.user.login }}
-          echo ${{ github.event.issue.user.email }}
           echo ${{ github.event.issue.body }}
