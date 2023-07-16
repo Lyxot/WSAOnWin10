@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Target CPU architecture of WSA.
+        ## Please enter the correct information
   - type: dropdown
     id: arch
     attributes:

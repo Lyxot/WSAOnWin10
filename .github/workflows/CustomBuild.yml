@@ -86,7 +86,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          check-latest: true
+          python-version: '3.9'
       - name: Get Arguments(workflow_call)
         if: github.event_name != 'workflow_dispatch'
         id: ga_c
@@ -140,8 +144,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           check-latest: true
-          python-version: '3.x'
-          cache: 'pip'
+          python-version: '3.9'
         
       - name: Install Dependencies
         run: |

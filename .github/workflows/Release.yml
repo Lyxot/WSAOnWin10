@@ -15,6 +15,11 @@ jobs:
     steps:
       - name: Clone Repository
         run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          check-latest: true
+          python-version: '3.9'
       - name: Get Latest Version
         id: get
         run: |
@@ -58,7 +63,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           check-latest: true
-          python-version: '3.x'
+          python-version: '3.9'
           cache: 'pip'
         
       - name: Install Dependencies
