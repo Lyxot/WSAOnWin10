@@ -1,0 +1,5 @@
+Arch: x64
+Version: Insider Preview
+Build: 25905
+Download URL: https://software.download.prss.microsoft.com/dbazure/Windows11_InsiderPreview_Client_x64_zh-cn_25905.iso?t=e17d5a84-6ba4-4d29-9647-6a0a80289d1c&e=1689612962&h=ec995ae9c742f954ee008c4696f9af106c0188c84e5626f5770f9fe7d682a39a
+Format: .iso
