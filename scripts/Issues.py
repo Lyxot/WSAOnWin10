@@ -20,7 +20,7 @@ if sys.argv[1] == "Custom Build" or sys.argv[1] == "Custom Build(workflow_dispat
     arch_dist = {"x64":"x64", "arm64":"arm64"}
     release_type_dist = {"Retail":"retail", "Release Preview":"RP", "Insider Slow":"WIS", "Insider Fast":"WIF"}
     root_sol_dist = {"Non-root":["none", "stable"], "Magisk Stable":["magisk", "stable"], "Magisk Beta":["magisk", "beta"], "Magisk Canary":["magisk", "canary"], "Magisk Debug":["magisk", "debug"], "KernelSU": ["kernelsu", "stable"]}
-    gapps_brand_dist = {"MindTheGapps":"--gapps-brand MindTheGapps", "OpenGApps":"--gapps-brand OpenGApps", "No GApps": "none"}
+    gapps_brand_dist = {"MindTheGapps":"MindTheGapps", "OpenGApps":"OpenGApps", "No GApps": "none"}
 
     arch = arch_dist[list[0]]
     release_type = release_type_dist[list[1]]

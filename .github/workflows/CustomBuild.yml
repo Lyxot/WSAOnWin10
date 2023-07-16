@@ -151,7 +151,7 @@ jobs:
 
       - name: Build WSA
         run: |
-          ./MagiskOnWSALocal/scripts/build.sh ${{ needs.get_arg.outputs.cmd }}
+          ./MagiskOnWSALocal/scripts/build.sh --release-type ${{ needs.get_arg.outputs.release_type }} --remove-amazon --arch ${{ needs.get_arg.outputs.arch }} --root-sol ${{ needs.get_arg.outputs.root_sol }} --magisk-ver ${{ needs.get_arg.outputs.magisk_ver }} --gapps-brand ${{ needs.get_arg.outputs.gapps_brand }} ${{ needs.get_arg.outputs.remove_amazon }}
           cp DLLs/${{ needs.get_arg.outputs.arch }}/*.dll MagiskOnWSALocal/output/*/WsaClient/
 
       - name: Upload Artifact
