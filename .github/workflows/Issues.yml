@@ -151,6 +151,7 @@ jobs:
         with:
           actions: 'close-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
+          close-reason: completed
 
   comment_dd_1:
     needs: get_arg_dd
@@ -199,3 +200,4 @@ jobs:
         with:
           actions: 'close-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
+          close-reason: completed
