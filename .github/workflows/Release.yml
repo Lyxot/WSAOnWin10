@@ -20,6 +20,9 @@ jobs:
         with:
           check-latest: true
           python-version: '3.9'
+      - name: Install Dependencies
+        run: |
+          pip3 install -r MagiskOnWSALocal/scripts/requirements.txt
       - name: Get Latest Version
         id: get
         run: |
