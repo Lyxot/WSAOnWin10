@@ -3,14 +3,10 @@ description: Run Actions
 title: "Custom Build"
 labels: ["CustomBuild"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        ## Your custom build will be upload in 15 minutes
   - type: dropdown
     id: arch
     attributes:
-      label: Arch
+      label: Target CPU architecture of WSA
       options:
         - x64
         - arm64

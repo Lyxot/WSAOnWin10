@@ -3,10 +3,7 @@ name: Auto Comment Issues
 on:
   issues:
     types:
-      - opened
-  issue_comment:
-    types:
-      - created
+      - labeled
 
 env:
   BODY: ${{ github.event.issue.body }}
@@ -21,10 +18,22 @@ jobs:
           echo "${{ github.event.issue.title }}"
           echo "${{ github.event.issue.user.login }}"
           echo "${{ github.event.issue.body }}"
+  
+  comment_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello ${{ github.event.issue.user.login }}. We are checking your request. More information will be presented later.
 
   get_arg_cb:
     needs: echo
-    if: ${{ github.event.issue.title == 'Custom Build' }}
+    if: ${{ github.event.label.name == 'CustomBuild' }}
     outputs:
       arch: ${{ steps.ga_c.outputs.arch }}
       release_type: ${{ steps.ga_c.outputs.release_type }}
@@ -32,6 +41,7 @@ jobs:
       magisk_ver: ${{ steps.ga_c.outputs.magisk_ver }}
       gapps_brand: ${{ steps.ga_c.outputs.gapps_brand }}
       remove_amazon: ${{ steps.ga_c.outputs.remove_amazon }}
+      isSuccess: ${{ steps.ga_c.outputs.isSuccess }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,7 +53,7 @@ jobs:
 
   get_arg_dd:
     needs: echo
-    if: ${{ github.event.issue.title == 'Upload Original Dll File' }}
+    if: ${{ github.event.label.name == 'UploadDll' }}
     outputs:
       arch: ${{ steps.ga_d.outputs.arch }}
       version: ${{ steps.ga_d.outputs.version }}
@@ -53,6 +63,7 @@ jobs:
       upload: ${{ steps.ga_d.outputs.upload }}
       email: ${{ steps.ga_d.outputs.email }}
       username: ${{ steps.ga_d.outputs.username }}
+      isSuccess: ${{ steps.ga_d.outputs.isSuccess }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -61,6 +72,33 @@ jobs:
       - name: Get Arguments(DownloadDll)
         id: ga_d
         run: python3 scripts/Issues.py "Upload Original Dll File"
+    
+  comment_2_cb:
+    needs: get_arg_cb
+    if: needs.get_arg_cb.outputs.isSuccess == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Wrong input! Please check your input or contact the repository owner.
+  comment_2_dd:
+    needs: get_arg_dd
+    if: needs.get_arg_dd.outputs.isSuccess == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Wrong input! Please check your input or contact the repository owner.
 
   comment_cb_1:
     needs: get_arg_cb
@@ -73,7 +111,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           body: |
-            Hello ${{ github.event.issue.user.login }}. Your custom build has started building. Please go to the URL below for more details.
+            Hello ${{ github.event.issue.user.login }}. Your custom build has started building.It will be finished in 20 minutes. Please go to the URL below for more details.
             > ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
   
   custom_build:
@@ -100,6 +138,25 @@ jobs:
           body: |
             Hello ${{ github.event.issue.user.login }}. Your custom WSA build has been built. Please go to the URL below and download the Artifact.  
             > ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
+      - name: Close issue
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'close-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  comment_dd_1:
+    needs: get_arg_dd
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello ${{ github.event.issue.user.login }}. The download has been started. It will be finished in 5 minutes. Please go to the URL below for more details.
+            > ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
 
   download_dll:
     needs: get_arg_dd
@@ -113,3 +170,23 @@ jobs:
       upload: ${{ needs.get_arg_dd.outputs.upload }}
       email: ${{ needs.get_arg_dd.outputs.email }}
       username: ${{ needs.get_arg_dd.outputs.username }}
+
+  comment_dd_2:
+    needs: download_dll
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello ${{ github.event.issue.user.login }}. The download has been finished. Please go to the URL below for more details. 
+            > ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
+            Thank you for uploading.
+      - name: Close issue
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'close-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}

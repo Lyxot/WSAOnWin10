@@ -1,7 +1,10 @@
 import os
 import sys
 
-
+arch_dist = {"x64":"x64", "arm64":"arm64"}
+release_type_dist = {"Retail":"retail", "Release Preview":"RP", "Insider Slow":"WIS", "Insider Fast":"WIF"}
+root_sol_dist = {"Non-root":["none", "stable"], "Magisk Stable":["magisk", "stable"], "Magisk Beta":["magisk", "beta"], "Magisk Canary":["magisk", "canary"], "Magisk Debug":["magisk", "debug"], "KernelSU": ["kernelsu", "stable"]}
+gapps_brand_dist = {"MindTheGapps":"MindTheGapps", "OpenGApps":"OpenGApps", "No GApps": "none"}
 
 if sys.argv[1] == "Custom Build(workflow_dispatch)":
     list = []
@@ -16,12 +19,17 @@ else:
         if "#" in i:
             list.remove(i)
 
-if sys.argv[1] == "Custom Build" or sys.argv[1] == "Custom Build(workflow_dispatch)":
-    arch_dist = {"x64":"x64", "arm64":"arm64"}
-    release_type_dist = {"Retail":"retail", "Release Preview":"RP", "Insider Slow":"WIS", "Insider Fast":"WIF"}
-    root_sol_dist = {"Non-root":["none", "stable"], "Magisk Stable":["magisk", "stable"], "Magisk Beta":["magisk", "beta"], "Magisk Canary":["magisk", "canary"], "Magisk Debug":["magisk", "debug"], "KernelSU": ["kernelsu", "stable"]}
-    gapps_brand_dist = {"MindTheGapps":"MindTheGapps", "OpenGApps":"OpenGApps", "No GApps": "none"}
+if sys.argv[1] == "Custom Build" and len(list) != 5:
+    if not (list[0] in arch_dist and list[1] in release_type_dist and list[2] in root_sol_dist and list[3] in gapps_brand_dist and list[4] in ["- [ ] Remove Amazon","- [X] Remove Amazon"]):
+        os.system("echo isSuccess=false >> $GITHUB_OUTPUT")
+        exit()
+elif sys.argv[1] == "Upload Original Dll File" and len(list) != 7:
+    if not (list[0] in arch_dist and list[2].isdigit() and list[4] in [".iso", ".wim", ".esd", ".vhdx", ".zip"]):
+        os.system("echo isSuccess=false >> $GITHUB_OUTPUT")
+        exit()
+    
 
+if sys.argv[1] == "Custom Build" or sys.argv[1] == "Custom Build(workflow_dispatch)":
     arch = arch_dist[list[0]]
     release_type = release_type_dist[list[1]]
     root_sol = root_sol_dist[list[2]][0]
@@ -55,3 +63,5 @@ elif sys.argv[1] == "Upload Original Dll File":
         os.system("echo upload=false >> $GITHUB_OUTPUT")
     else:
         os.system("echo upload=true >> $GITHUB_OUTPUT")
+
+os.system("echo isSuccess=true >> $GITHUB_OUTPUT")
