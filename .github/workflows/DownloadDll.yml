@@ -27,8 +27,7 @@ on:
       upload:
         description: 'Upload'
         required: true
-        type: boolean
-        default: false
+        type: string
       email:
         description: 'Email'
         required: true
@@ -72,8 +71,11 @@ on:
       upload:
         description: 'Upload'
         required: true
-        type: boolean
-        default: false
+        type: choice
+        options: 
+          - true
+          - false
+        default: 'false'
       email:
         description: 'Email'
         required: true
@@ -190,7 +192,7 @@ jobs:
           rm -rf tmp
       
       - name: commit
-        if: ${{ inputs.upload }} == true
+        if: ${{ inputs.upload }} == 'true'
         run: |
           git config --global user.email $EMAIL
           git config --global user.name $USERNAME
@@ -199,7 +201,7 @@ jobs:
           git pull
           
       - name: Push changes
-        if: ${{ inputs.upload }} == true
+        if: ${{ inputs.upload }} == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
