@@ -33,20 +33,11 @@ body:
       label: Root solution
       options:
         - Non-root
+        - Magisk Stable
+        - Magisk Beta
+        - Magisk Canary
+        - Magisk Debug
         - KernelSU
-        - Magisk
-    validations:
-      required: true
-  - type: dropdown
-    id: magisk_ver
-    attributes:
-      label: Magisk Version
-      options:
-        - stable
-        - beta
-        - canary
-        - debug
-        - release
     validations:
       required: true
   - type: dropdown
@@ -56,7 +47,7 @@ body:
       options:
         - MindTheGapps
         - OpenGApps
-        - Non-GApps
+        - No GApps
     validations:
       required: true
   - type: checkboxes
