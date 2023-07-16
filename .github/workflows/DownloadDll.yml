@@ -1,6 +1,42 @@
 name: Download Original Dll files
 
 on:
+  workflow_call:
+    inputs:
+      arch:
+        description: 'Arch'
+        required: true
+        type: string
+      version:
+        description: 'Version(e.g. 22H2)'
+        required: false
+        type: string
+      build:
+        description: 'Build(e.g. 22621)'
+        required: true
+        type: string
+      url:
+        description: 'Download URL'
+        required: true
+        type: string
+      format:
+        description: 'File Format'
+        required: true
+        type: string
+        default: .iso
+      upload:
+        description: 'Upload'
+        required: true
+        type: boolean
+        default: false
+      email:
+        description: 'Email'
+        required: true
+        type: string
+      username:
+        description: 'Username'
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       arch:

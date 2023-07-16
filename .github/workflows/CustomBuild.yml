@@ -1,0 +1,162 @@
+name: Custom Build
+
+on:
+  workflow_call:
+    inputs:
+      cmd:
+        description: 'Command Line'
+        type: string
+        required: true
+      arch:
+        type: string
+        description: Target CPU architecture of WSA.
+        required: true
+  workflow_dispatch:
+    inputs:
+      arch:
+        type: choice
+        description: Target CPU architecture of WSA.
+        required: true
+        options: [x64, arm64]
+        default: x64
+      release_type:
+        type: choice
+        description: WSA Release Channel
+        required: true
+        options: 
+          - Retail
+          - Release Preview
+          - Insider Slow
+          - Insider Fast
+        default: "Retail"
+      root_sol:
+        type: choice
+        description: Root solution
+        required: true
+        options: 
+          - Non-root
+          - Magisk Stable
+          - Magisk Beta
+          - Magisk Canary
+          - Magisk Debug
+          - KernelSU
+        default: "Magisk Stable"
+      gapps_brand:
+        type: choice
+        description: Google Apps brand
+        required: true
+        options: 
+          - MindTheGapps
+          - OpenGApps
+          - No GApps
+        default: "MindTheGapps"
+      remove_amazon:
+        description: "Remove Amazon Appstore from the system"
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  get_arg:
+    name: Get Arguments
+    runs-on: ubuntu-latest
+    outputs:
+      cmd: steps.ga.outputs.cmd
+      arch: steps.ga.outputs.arch
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get Arguments(workflow_call)
+        if: github.event_name == 'workflow_call'
+        id: ga_c
+        run: |
+          echo "cmd=${{ inputs.cmd }}" >> $GITHUB_OUTPUT
+          echo "arch=${{ inputs.arch }}" >> $GITHUB_OUTPUT
+
+      - name: Get Arguments(workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        id: ga_d
+        run: python3 scripts/Issues.py "Custom Build(workflow_dispatch)" "${{ inputs.arch }}" "${{ inputs.release_type }}" "${{ inputs.root_sol }}" "${{ inputs.gapps_brand }}" "${{ inputs.remove_amazon }}"
+
+      - name: output
+        id: ga
+        run: |
+          if [[ ${{ github.event_name }} == "workflow_call" ]];then echo "cmd=${{ steps.ga_c.outputs.cmd }}" >> $GITHUB_OUTPUT;echo "arch=${{ steps.ga_c.outputs.arch }}" >> $GITHUB_OUTPUT;fi
+          if [[ ${{ github.event_name }} == "workflow_dispatch" ]];then echo "cmd=${{ steps.ga_d.outputs.cmd }}" >> $GITHUB_OUTPUT;echo "arch=${{ steps.ga_d.outputs.arch }}" >> $GITHUB_OUTPUT;fi
+
+  build:
+    name: Build WSA
+    needs: get_arg
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Clone Repository
+        run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          check-latest: true
+          python-version: '3.x'
+          cache: 'pip'
+        
+      - name: Install Dependencies
+        run: |
+          pip3 install -r MagiskOnWSALocal/scripts/requirements.txt
+          sudo apt update
+          sudo apt install -y 7zip lzip patchelf e2fsprogs python3 aria2 attr unzip whiptail qemu-utils p7zip-full python3-venv wine winetricks
+
+      - name: Build WSA
+        run: |
+          ./MagiskOnWSALocal/scripts/build.sh ${{ needs.get_arg.outputs.cmd }}
+          cp DLLs/${{ needs.get_arg.outputs.arch }}/*.dll MagiskOnWSALocal/output/*/WsaClient/
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: tmp
+          path: MagiskOnWSALocal/output
+
+  make-pri:
+    name: Merge language resource
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          path: ./output/
+          name: tmp
+
+      - id: name
+        shell: bash
+        run: echo "foldername=$(ls output)" >> $GITHUB_OUTPUT
+
+      - name: Copy makepri from WindowsSDK
+        id: copy
+        run: cp -Force "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makepri.exe" "./output/${{ steps.name.outputs.foldername }}"
+
+      - name: Merge language resource
+        shell: pwsh
+        run: |
+          cd "./output/${{ steps.name.outputs.foldername }}"
+          $ProcMakePri = Start-Process pwsh.exe -PassThru -NoNewWindow -Args "-ExecutionPolicy Bypass -File MakePri.ps1"
+          $ProcMakePri.WaitForExit()
+
+      - name: Remove unused artifact
+        uses: geekyeggo/delete-artifact@v2
+        with:
+          name: tmp
+        
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.name.outputs.foldername }}
+          path: output/${{ steps.name.outputs.foldername }}
+

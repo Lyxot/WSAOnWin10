@@ -10,10 +10,10 @@ on:
 
 env:
   BODY: ${{ github.event.issue.body }}
+  USERNAME: ${{ github.event.issue.user.login }}
 
 jobs:
   comment:
-    # if: github.event_name == 'issues'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,5 +25,28 @@ jobs:
           echo "${{ github.event.issue.user.login }}"
           echo "${{ github.event.issue.body }}"
 
-      - name: Get Arguments
-        run: python3 scripts/Issues.py "${{ github.event.issue.title }}"
+      - name: Get Arguments(CustomBuild)
+        id: ga_c
+        run: python3 scripts/Issues.py "Custom Build"
+      
+      - name: Get Arguments(DownloadDll)
+        id: ga_d
+        run: python3 scripts/Issues.py "Upload Original Dll File"
+
+      - name: Run Workflow(CustomBuild)
+        uses: ./.github/workflows/CustomBuild.yml
+        with:
+          cmd: steps.ga_c.outputs.cmd
+          arch: steps.ga_c.outputs.arch
+
+      - name: Run Workflow(DownloadDll)
+        uses: ./.github/workflows/DownloadDll.yml
+        with:
+          arch: steps.ga_d.outputs.arch
+          version: steps.ga_d.outputs.version
+          build: steps.ga_d.outputs.build
+          url: steps.ga_d.outputs.url
+          format: steps.ga_d.outputs.format
+          upload: steps.ga_d.outputs.upload
+          email: steps.ga_d.outputs.email
+          username: steps.ga_d.outputs.username

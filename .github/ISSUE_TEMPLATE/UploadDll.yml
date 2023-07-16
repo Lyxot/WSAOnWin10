@@ -46,6 +46,12 @@ body:
         - .zip
     validations:
       required: true
+  - type: input
+    id: email
+    attributes:
+      label: Email(Must be consistent with your GitHub account)
+    validations:
+      required: true
   - type: checkboxes
     id: upload
     attributes:
