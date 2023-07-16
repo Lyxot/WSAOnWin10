@@ -15,6 +15,6 @@ jobs:
     steps:
       - name: echo
         run: |
-          echo ${{ github.event.issue.title }}
-          echo ${{ github.event.issue.user.login }}
-          echo ${{ github.event.issue.body }}
+          echo "${{ github.event.issue.title }}"
+          echo "${{ github.event.issue.user.login }}"
+          echo "${{ github.event.issue.body }}"
