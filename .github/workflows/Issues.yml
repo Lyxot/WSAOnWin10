@@ -13,40 +13,67 @@ env:
   USERNAME: ${{ github.event.issue.user.login }}
 
 jobs:
-  comment:
+  echo:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       - name: echo
         run: |
           echo "${{ github.event.issue.title }}"
           echo "${{ github.event.issue.user.login }}"
           echo "${{ github.event.issue.body }}"
 
+  get_arg_cb:
+    needs: echo
+    if: ${{ github.event.issue.title }} == "Custom Build"
+    outputs:
+      cmd: steps.ga_c.outputs.cmd
+      arch: steps.ga_c.outputs.arch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
       - name: Get Arguments(CustomBuild)
         id: ga_c
         run: python3 scripts/Issues.py "Custom Build"
+
+  get_arg_dd:
+    needs: echo
+    if: ${{ github.event.issue.title }} == "Upload Original Dll File"
+    outputs:
+      arch: steps.ga_d.outputs.arch
+      version: steps.ga_d.outputs.version
+      build: steps.ga_d.outputs.build
+      url: steps.ga_d.outputs.url
+      format: steps.ga_d.outputs.format
+      upload: steps.ga_d.outputs.upload
+      email: steps.ga_d.outputs.email
+      username: steps.ga_d.outputs.username
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       
       - name: Get Arguments(DownloadDll)
         id: ga_d
         run: python3 scripts/Issues.py "Upload Original Dll File"
 
-      - name: Run Workflow(CustomBuild)
-        uses: ./.github/workflows/CustomBuild.yml
-        with:
-          cmd: steps.ga_c.outputs.cmd
-          arch: steps.ga_c.outputs.arch
+  custom_build:
+    needs: get_arg_cb
+    uses: A-JiuA/WSAOnWin10/.github/workflows/CustomBuild.yml@master
+    with:
+      cmd: needs.get_arg_cb.outputs.cmd
+      arch: needs.get_arg_cb.outputs.arch
 
-      - name: Run Workflow(DownloadDll)
-        uses: ./.github/workflows/DownloadDll.yml
-        with:
-          arch: steps.ga_d.outputs.arch
-          version: steps.ga_d.outputs.version
-          build: steps.ga_d.outputs.build
-          url: steps.ga_d.outputs.url
-          format: steps.ga_d.outputs.format
-          upload: steps.ga_d.outputs.upload
-          email: steps.ga_d.outputs.email
-          username: steps.ga_d.outputs.username
+  download_dll:
+    needs: get_arg_dd
+    uses: A-JiuA/WSAOnWin10/.github/workflows/DownloadDll.yml@master
+    with:
+      arch: needs.get_arg_dd.outputs.arch
+      version: needs.get_arg_dd.outputs.version
+      build: needs.get_arg_dd.outputs.build
+      url: needs.get_arg_dd.outputs.url
+      format: needs.get_arg_dd.outputs.format
+      upload: needs.get_arg_dd.outputs.upload
+      email: needs.get_arg_dd.outputs.email
+      username: needs.get_arg_dd.outputs.username
