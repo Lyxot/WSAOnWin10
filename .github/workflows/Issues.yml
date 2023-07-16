@@ -1,0 +1,18 @@
+name: Auto Comment Issues
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  comment:
+    if: github.event_name == 'issues'
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: |
+          echo ${{ github.event.issue.title }}
+          echo ${{ github.event.issue.user.login }}
+          echo ${{ github.event.issue.user.email }}
+          echo ${{ github.event.issue.body }}

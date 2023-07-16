@@ -1,0 +1,54 @@
+name: Upload Original Dll File
+description: Run Actions
+title: "Upload Original Dll File"
+labels: ["UploadDll"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thank you for uploading
+  - type: dropdown
+    id: arch
+    attributes:
+      label: Arch
+      options:
+        - x64
+        - arm64
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version(e.g. 22H2)
+    validations:
+      required: false
+  - type: input
+    id: build
+    attributes:
+      label: Build(e.g. 22621)
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Download URL
+    validations:
+      required: true
+  - type: dropdown
+    id: format
+    attributes:
+      label: File Format
+      options:
+        - .iso
+        - .wim
+        - .esd
+        - .vhdx
+        - .zip
+    validations:
+      required: true
+  - type: checkboxes
+    id: upload
+    attributes:
+      label: Upload
+      options:
+        - label: Upload
