@@ -108,6 +108,13 @@ jobs:
           sudo apt update
           sudo apt install -y qemu-kvm wimtools unzip curl
 
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          check-latest: true
+          python-version: '3.9'
+          cache: 'pip'
+
       - name: Download
         run: |
           echo "Arch: $ARCH"
@@ -205,3 +212,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+  DllInject:
+    needs: download
+    if: ${{ inputs.upload }} == 'true'
+    uses: A-JiuA/WSAOnWin10/.github/workflows/DllInject.yml@master
