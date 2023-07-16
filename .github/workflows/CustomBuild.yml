@@ -71,8 +71,8 @@ jobs:
         if: github.event_name != 'workflow_dispatch'
         id: ga_c
         run: |
-          echo "cmd=${{ inputs.cmd }}" >> $GITHUB_OUTPUT
-          echo "arch=${{ inputs.arch }}" >> $GITHUB_OUTPUT
+          echo cmd='${{ inputs.cmd }}' >> $GITHUB_OUTPUT
+          echo arch='${{ inputs.arch }}' >> $GITHUB_OUTPUT
 
       - name: Get Arguments(workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
@@ -82,8 +82,8 @@ jobs:
       - name: output
         id: ga
         run: |
-          if [[ ${{ github.event_name }} != "workflow_dispatch" ]];then echo "cmd=${{ steps.ga_c.outputs.cmd }}" >> $GITHUB_OUTPUT;echo "arch=${{ steps.ga_c.outputs.arch }}" >> $GITHUB_OUTPUT;fi
-          if [[ ${{ github.event_name }} == "workflow_dispatch" ]];then echo "cmd=${{ steps.ga_d.outputs.cmd }}" >> $GITHUB_OUTPUT;echo "arch=${{ steps.ga_d.outputs.arch }}" >> $GITHUB_OUTPUT;fi
+          if [[ ${{ github.event_name }} != "workflow_dispatch" ]];then echo cmd='${{ steps.ga_c.outputs.cmd }}' >> $GITHUB_OUTPUT;echo arch='${{ steps.ga_c.outputs.arch }}' >> $GITHUB_OUTPUT;fi
+          if [[ ${{ github.event_name }} == "workflow_dispatch" ]];then echo cmd='${{ steps.ga_d.outputs.cmd }}' >> $GITHUB_OUTPUT;echo arch='${{ steps.ga_d.outputs.arch }}' >> $GITHUB_OUTPUT;fi
 
   build:
     name: Build WSA

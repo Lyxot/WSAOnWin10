@@ -37,16 +37,16 @@ if sys.argv[1] == "Custom Build" or sys.argv[1] == "Custom Build(workflow_dispat
         else:
             remove_amazon = ""
     output = arch + " " + release_type + " " + root_sol + " " + gapps_brand + " " + remove_amazon
-    os.system("echo cmd="+output+" >> $GITHUB_OUTPUT")
-    os.system("echo arch="+arch+" >> $GITHUB_OUTPUT")
+    os.system("echo cmd='"+output+"' >> $GITHUB_OUTPUT")
+    os.system("echo arch='"+arch+"' >> $GITHUB_OUTPUT")
 elif sys.argv[1] == "Upload Original Dll File":
-    os.system("echo 'arch="+list[0]+"' >> $GITHUB_OUTPUT")
-    os.system("echo 'version="+list[1]+"' >> $GITHUB_OUTPUT")
-    os.system("echo 'build="+list[2]+"' >> $GITHUB_OUTPUT")
-    os.system("echo 'url="+list[3]+"' >> $GITHUB_OUTPUT")
-    os.system("echo 'format="+list[4]+"' >> $GITHUB_OUTPUT")
-    os.system("echo 'email="+list[5]+"' >> $GITHUB_OUTPUT")
-    os.system("echo 'username="+USERNAME+"' >> $GITHUB_OUTPUT")
+    os.system("echo arch='"+list[0]+"' >> $GITHUB_OUTPUT")
+    os.system("echo version='"+list[1]+"' >> $GITHUB_OUTPUT")
+    os.system("echo build='"+list[2]+"' >> $GITHUB_OUTPUT")
+    os.system("echo url='"+list[3]+"' >> $GITHUB_OUTPUT")
+    os.system("echo format='"+list[4]+"' >> $GITHUB_OUTPUT")
+    os.system("echo email='"+list[5]+"' >> $GITHUB_OUTPUT")
+    os.system("echo username='"+USERNAME+"' >> $GITHUB_OUTPUT")
     if list[6] == "- [ ] Upload":
         os.system("echo upload=false >> $GITHUB_OUTPUT")
     else:
