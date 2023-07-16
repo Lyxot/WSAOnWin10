@@ -27,7 +27,8 @@ on:
       upload:
         description: 'Upload'
         required: true
-        type: string
+        type: boolean
+        default: false
       email:
         description: 'Email'
         required: true
