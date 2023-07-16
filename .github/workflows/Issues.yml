@@ -192,6 +192,7 @@ jobs:
           body: |
             Hello ${{ github.event.issue.user.login }}. The download has been finished. Please go to the URL below for more details. 
             > ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  
+            
             Thank you for uploading.
       - name: Close issue
         uses: actions-cool/issues-helper@v3
