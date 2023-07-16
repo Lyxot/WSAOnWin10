@@ -8,14 +8,22 @@ on:
     types:
       - created
 
+env:
+  BODY: ${{ github.event.issue.body }}
+
 jobs:
   comment:
     # if: github.event_name == 'issues'
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: echo
         run: |
           echo "${{ github.event.issue.title }}"
-          echo "${{ github.event.issue.labels.name }}"
           echo "${{ github.event.issue.user.login }}"
           echo "${{ github.event.issue.body }}"
+
+      - name: Get Arguments
+        run: python3 scripts/Issues.py "${{ github.event.issue.title }}"
