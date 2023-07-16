@@ -26,8 +26,12 @@ jobs:
     needs: echo
     if: ${{ github.event.issue.title == 'Custom Build' }}
     outputs:
-      cmd: ${{ steps.ga_c.outputs.cmd }}
       arch: ${{ steps.ga_c.outputs.arch }}
+      release_type: ${{ steps.ga_c.outputs.release_type }}
+      root_sol: ${{ steps.ga_c.outputs.root_sol }}
+      magisk_ver: ${{ steps.ga_c.outputs.magisk_ver }}
+      gapps_brand: ${{ steps.ga_c.outputs.gapps_brand }}
+      remove_amazon: ${{ steps.ga_c.outputs.remove_amazon }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -76,8 +80,12 @@ jobs:
     needs: get_arg_cb
     uses: A-JiuA/WSAOnWin10/.github/workflows/CustomBuild.yml@master
     with:
-      cmd: ${{ needs.get_arg_cb.outputs.arch }}
       arch: ${{ needs.get_arg_cb.outputs.arch }}
+      release_type: ${{ needs.get_arg_cb.outputs.release_type }}
+      root_sol: ${{ needs.get_arg_cb.outputs.root_sol }}
+      magisk_ver: ${{ needs.get_arg_cb.outputs.magisk_ver }}
+      gapps_brand: ${{ needs.get_arg_cb.outputs.gapps_brand }}
+      remove_amazon: ${{ needs.get_arg_cb.outputs.remove_amazon }}
 
   comment_cb_2:
     needs: custom_build

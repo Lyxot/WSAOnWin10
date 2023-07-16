@@ -17,14 +17,15 @@ else:
             list.remove(i)
 
 if sys.argv[1] == "Custom Build" or sys.argv[1] == "Custom Build(workflow_dispatch)":
-    arch_dist = {"x64":"--arch x64", "arm64":"--arch arm64"}
-    release_type_dist = {"Retail":"--release-type retail", "Release Preview":"--release-type RP", "Insider Slow":"--release-type WIS", "Insider Fast":"--release-type WIF"}
-    root_sol_dist = {"Non-root":"--root-sol none", "Magisk Stable":"--root-sol magisk --magisk-ver stable", "Magisk Beta":"--root-sol magisk --magisk-ver beta", "Magisk Canary":"--root-sol magisk --magisk-ver canary", "Magisk Debug":"--root-sol magisk --magisk-ver debug", "KernelSU": "--root-sol kernelsu"}
+    arch_dist = {"x64":"x64", "arm64":"arm64"}
+    release_type_dist = {"Retail":"retail", "Release Preview":"RP", "Insider Slow":"WIS", "Insider Fast":"WIF"}
+    root_sol_dist = {"Non-root":["none", "stable"], "Magisk Stable":["magisk", "stable"], "Magisk Beta":["magisk", "beta"], "Magisk Canary":["magisk", "canary"], "Magisk Debug":["magisk", "debug"], "KernelSU": ["kernelsu", "stable"]}
     gapps_brand_dist = {"MindTheGapps":"--gapps-brand MindTheGapps", "OpenGApps":"--gapps-brand OpenGApps", "No GApps": "none"}
 
     arch = arch_dist[list[0]]
     release_type = release_type_dist[list[1]]
-    root_sol = root_sol_dist[list[2]]
+    root_sol = root_sol_dist[list[2]][0]
+    magisk_ver = root_sol_dist[list[2]][1]
     gapps_brand = gapps_brand_dist[list[3]]
     if sys.argv[1] == "Custom Build":
         if list[4] == "- [ ] Remove Amazon":
@@ -32,13 +33,16 @@ if sys.argv[1] == "Custom Build" or sys.argv[1] == "Custom Build(workflow_dispat
         else:
             remove_amazon = "--remove-amazon"
     elif sys.argv[1] == "Custom Build(workflow_dispatch)":
-        if list[4] == "true":
+        if list[6] == "true":
             remove_amazon = "--remove-amazon"
         else:
-            remove_amazon = ""
-    output = arch + " " + release_type + " " + root_sol + " " + gapps_brand + " " + remove_amazon
-    os.system("echo cmd='"+output+"' >> $GITHUB_OUTPUT")
+            remove_amazon = " "
     os.system("echo arch='"+arch+"' >> $GITHUB_OUTPUT")
+    os.system("echo release_type='"+release_type+"' >> $GITHUB_OUTPUT")
+    os.system("echo root_sol='"+root_sol+"' >> $GITHUB_OUTPUT")
+    os.system("echo magisk_ver='"+magisk_ver+"' >> $GITHUB_OUTPUT")
+    os.system("echo gapps_brand='"+gapps_brand+"' >> $GITHUB_OUTPUT")
+    os.system("echo remove_amazon='"+remove_amazon+"' >> $GITHUB_OUTPUT")
 elif sys.argv[1] == "Upload Original Dll File":
     os.system("echo arch='"+list[0]+"' >> $GITHUB_OUTPUT")
     os.system("echo version='"+list[1]+"' >> $GITHUB_OUTPUT")

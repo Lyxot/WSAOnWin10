@@ -3,14 +3,30 @@ name: Custom Build
 on:
   workflow_call:
     inputs:
-      cmd:
-        description: 'Command Line'
-        type: string
-        required: true
       arch:
         type: string
         description: Target CPU architecture of WSA.
         required: true
+      release_type:
+        type: string
+        description: WSA Release Channel
+        required: true
+      root_sol:
+        type: string
+        description: Root solution
+        required: true
+      magisk_ver:
+        type: string
+        description: Magisk Version
+        required: true
+      gapps_brand:
+        type: string
+        description: Google Apps brand
+        required: true
+      remove_amazon:
+        description: "Remove Amazon Appstore from the system"
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       arch:
@@ -61,8 +77,12 @@ jobs:
     name: Get Arguments
     runs-on: ubuntu-latest
     outputs:
-      cmd: ${{ steps.ga.outputs.cmd }}
       arch: ${{ steps.ga.outputs.arch }}
+      release_type: ${{ steps.ga.outputs.release_type }}
+      root_sol: ${{ steps.ga.outputs.root_sol }}
+      magisk_ver: ${{ steps.ga.outputs.magisk_ver }}
+      gapps_brand: ${{ steps.ga.outputs.gapps_brand }}
+      remove_amazon: ${{ steps.ga.outputs.remove_amazon }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -71,8 +91,12 @@ jobs:
         if: github.event_name != 'workflow_dispatch'
         id: ga_c
         run: |
-          echo cmd='${{ inputs.cmd }}' >> $GITHUB_OUTPUT
           echo arch='${{ inputs.arch }}' >> $GITHUB_OUTPUT
+          echo release_type='${{ inputs.release_type }}' >> $GITHUB_OUTPUT
+          echo root_sol='${{ inputs.root_sol }}' >> $GITHUB_OUTPUT
+          echo magisk_ver='${{ inputs.magisk_ver }}' >> $GITHUB_OUTPUT
+          echo gapps_brand='${{ inputs.gapps_brand }}' >> $GITHUB_OUTPUT
+          echo remove_amazon='${{ inputs.remove_amazon }}' >> $GITHUB_OUTPUT
 
       - name: Get Arguments(workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
@@ -82,8 +106,24 @@ jobs:
       - name: output
         id: ga
         run: |
-          if [[ ${{ github.event_name }} != "workflow_dispatch" ]];then echo cmd='${{ steps.ga_c.outputs.cmd }}' >> $GITHUB_OUTPUT;echo arch='${{ steps.ga_c.outputs.arch }}' >> $GITHUB_OUTPUT;fi
-          if [[ ${{ github.event_name }} == "workflow_dispatch" ]];then echo cmd='${{ steps.ga_d.outputs.cmd }}' >> $GITHUB_OUTPUT;echo arch='${{ steps.ga_d.outputs.arch }}' >> $GITHUB_OUTPUT;fi
+          if [[ ${{ github.event_name }} != "workflow_dispatch" ]]
+          then
+            echo arch='${{ steps.ga_c.outputs.arch }}' >> $GITHUB_OUTPUT
+            echo release_type='${{ steps.ga_c.outputs.release_type }}' >> $GITHUB_OUTPUT
+            echo root_sol='${{ steps.ga_c.outputs.root_sol }}' >> $GITHUB_OUTPUT
+            echo magisk_ver='${{ steps.ga_c.outputs.magisk_ver }}' >> $GITHUB_OUTPUT
+            echo gapps_brand='${{ steps.ga_c.outputs.gapps_brand }}' >> $GITHUB_OUTPUT
+            echo remove_amazon='${{ steps.ga_c.outputs.remove_amazon }}' >> $GITHUB_OUTPUT
+          fi
+          if [[ ${{ github.event_name }} == "workflow_dispatch" ]]
+          then
+            echo arch='${{ steps.ga_d.outputs.arch }}' >> $GITHUB_OUTPUT
+            echo release_type='${{ steps.ga_d.outputs.release_type }}' >> $GITHUB_OUTPUT
+            echo root_sol='${{ steps.ga_d.outputs.root_sol }}' >> $GITHUB_OUTPUT
+            echo magisk_ver='${{ steps.ga_d.outputs.magisk_ver }}' >> $GITHUB_OUTPUT
+            echo gapps_brand='${{ steps.ga_d.outputs.gapps_brand }}' >> $GITHUB_OUTPUT
+            echo remove_amazon='${{ steps.ga_d.outputs.remove_amazon }}' >> $GITHUB_OUTPUT
+          fi
 
   build:
     name: Build WSA
