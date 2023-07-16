@@ -53,8 +53,8 @@ jobs:
 
       - name: Commit
         run: |
-          git config --global user.email 1169942595@qq.com
-          git config --global user.name A-JiuA
+          git config --global user.email github-actions[bot]@users.noreply.github.com
+          git config --global user.name github-actions[bot]
           git add DLLs
           git commit -m "update icu.dll and winhttp.dll"
           git pull
