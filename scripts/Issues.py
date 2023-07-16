@@ -1,26 +1,7 @@
 import os
 import sys
 
-# BODY = os.getenv("BODY")
-BODY = '''### Arch
-
-x64
-
-### WSA Release Channel
-
-Retail
-
-### Root solution
-
-Non-root
-
-### GApps brand
-
-MindTheGapps
-
-### Remove Amazon
-
-- [ ] Remove Amazon'''
+BODY = os.getenv("BODY")
 
 list = BODY.split("\n\n")
 for i in list:
