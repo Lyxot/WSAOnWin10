@@ -83,7 +83,7 @@ jobs:
     
   comment_2_cb:
     needs: get_arg_cb
-    if: needs.get_arg_cb.outputs.isSuccess == 'false'
+    if: needs.get_arg_cb.outputs.isSuccess != 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Create comment
@@ -96,7 +96,7 @@ jobs:
             Wrong input! Please check your input or contact the repository owner.
   comment_2_dd:
     needs: get_arg_dd
-    if: needs.get_arg_dd.outputs.isSuccess == 'false'
+    if: needs.get_arg_dd.outputs.isSuccess != 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Create comment

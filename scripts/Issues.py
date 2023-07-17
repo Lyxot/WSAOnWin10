@@ -41,7 +41,7 @@ if sys.argv[1] == "Custom Build" or sys.argv[1] == "Custom Build(workflow_dispat
         else:
             remove_amazon = "--remove-amazon"
     elif sys.argv[1] == "Custom Build(workflow_dispatch)":
-        if list[6] == "true":
+        if list[4] == "true":
             remove_amazon = "--remove-amazon"
         else:
             remove_amazon = " "
