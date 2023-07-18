@@ -214,4 +214,4 @@ jobs:
   DllInject:
     needs: download
     if: ${{ inputs.upload }} == 'true'
-    uses: A-JiuA/WSAOnWin10/.github/workflows/DllInject.yml@master
+    uses: ./.github/workflows/DllInject.yml

@@ -124,7 +124,7 @@ jobs:
   
   custom_build:
     needs: get_arg_cb
-    uses: A-JiuA/WSAOnWin10/.github/workflows/CustomBuild.yml@master
+    uses: ./.github/workflows/CustomBuild.yml
     with:
       arch: ${{ needs.get_arg_cb.outputs.arch }}
       release_type: ${{ needs.get_arg_cb.outputs.release_type }}
@@ -169,7 +169,7 @@ jobs:
 
   download_dll:
     needs: get_arg_dd
-    uses: A-JiuA/WSAOnWin10/.github/workflows/DownloadDll.yml@master
+    uses: ./.github/workflows/DownloadDll.yml
     with:
       arch: ${{ needs.get_arg_dd.outputs.arch }}
       version: ${{ needs.get_arg_dd.outputs.version }}
