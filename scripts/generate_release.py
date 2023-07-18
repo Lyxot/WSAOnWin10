@@ -14,7 +14,7 @@ for i in file_list:
     cv_l = cv.split('.')
     if cv_l[0] >= v_l[0] and cv_l[1] >= v_l[1] and cv_l[2] >= v_l[2] and cv_l[3] >= v_l[3]:
         version = cv
-    os.system('mv "'+i+'" "'+i.replace('-Nightly','').replace('-stable','').replace('-NoGApps','').replace('-RemovedAmazon','')+'" 2>/dev/null || :')
+    os.system('mv "'+i+'" "'+i.replace('-Nightly','').replace('-stable','').replace('-NoGApps','').replace('-RemovedAmazon','').replace(i[i.find('('):i.find(')')+1],'')+'" 2>/dev/null || :')
 os.system('echo "version='+version+'" >> "$GITHUB_OUTPUT"')
 if last_version == version:
     exit()
