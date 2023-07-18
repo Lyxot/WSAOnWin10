@@ -1,5 +1,5 @@
 name: Upload Original Dll File
-description: Run Actions
+description: Run action to automaticly upload original dll file from windows media
 title: "Upload Original Dll File"
 labels: ["UploadDll"]
 body:

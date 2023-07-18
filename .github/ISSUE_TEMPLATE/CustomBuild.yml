@@ -1,5 +1,5 @@
 name: Custom Build
-description: Run Actions
+description: Request a custom WSA build
 title: "Custom Build"
 labels: ["CustomBuild"]
 body:
