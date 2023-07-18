@@ -21,6 +21,7 @@ jobs:
   
   comment_1:
     runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'CustomBuild' || github.event.label.name == 'UploadDll' }}
     steps:
       - name: Create comment
         uses: actions-cool/issues-helper@v3
