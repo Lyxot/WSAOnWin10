@@ -196,10 +196,17 @@ jobs:
         uses: geekyeggo/delete-artifact@v2
         with:
           name: tmp
+      
+      - name: File Checksum
+        shell: pwsh
+        run: |
+          (Get-FileHash -Path "${{ steps.name.outputs.foldername }}" -Algorithm SHA256).Hash | Out-File -FilePath "sha256-checksum.txt"
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: ${{ steps.name.outputs.foldername }}
-          path: output/${{ steps.name.outputs.foldername }}
+          path: |
+            output/${{ steps.name.outputs.foldername }}
+            sha256-checksum.txt
 
