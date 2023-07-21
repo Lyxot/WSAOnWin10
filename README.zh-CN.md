@@ -3,6 +3,7 @@
 ### 本项目仅确保在 Windows 10 上的稳定运行(Windows 11 理论上也能用)，如果您是 Windows 11 用户，最好使用 [WSA-Script](https://github.com/YT-Advanced/WSA-Script)
 English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSAOnWin10/blob/master/README.zh-CN.md))
 
+---
 ## 系统要求
 
 <center><table>
@@ -65,11 +66,11 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
 > 如果你想要使用自定义构建，请访问 [Issues](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build) 提交申请，然后从Github Actions下载安装包。详情请访问[自定义构建](#自定义构建)
 
 3. 检查安装包完整性
-    - 按键盘上的Windows键+ R并根据你的系统点击 Windows Terminal (管理员) 或 Powershell (管理员)
+    - 按键盘上的Windows键+ X并根据你的系统点击 Windows Terminal (管理员) 或 Powershell (管理员)
     - 输入下方的命令，将 `{X:\path\to\your\downloaded\archive\package}` (包括`{}`) 替换为你下载安装包的目录，回车
 
     `cd "{X:\path\to\your\downloaded\archive\package}"`
-    - 输入下方的命令，将 `WSA_2XXX.XXXXX.X.X_XXXX_Release-Nightly-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X-RemovedAmazon` 替换为你下载安装包的文件名，回车
+    - 输入下方的命令，将 `WSA_2XXX.XXXXX.X.X_XXXX_Release-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X` 替换为你下载安装包的文件名，回车
 
     `certutil -hashfile "WSA_2XXX.XXXXX.X.X_XXXX_Release-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X" SHA256`
     - 对比输出的哈希值与 [Release 页面](https://github.com/A-JiuA/WSAOnWin10/releases/latest)中的哈希值，或 Artifacts 中的 `sha256-checksum.txt` 中的哈希值
@@ -86,7 +87,7 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
    - 如果你已经安装过 `MagiskOnWSA`，脚本将自动卸载旧版 WSA 并保留用户数据，然后安装更新，不必为您的数据担心
    - 如果弹出的命令行窗口消失了，没有申请管理员权限且 WSA 没有成功安装，您需要手动以管理员身份运行`Install.ps1`:
       
-      - 按键盘上的Windows键+ R并根据你的系统点击 Windows Terminal **(管理员)** 或 Powershell **(管理员)**
+      - 按键盘上的Windows键+ X并根据你的系统点击 Windows Terminal **(管理员)** 或 Powershell **(管理员)**
       
       - 输入下方的命令，将 `{X:\path\to\your\extracted\folder}` (包括`{}`) 替换为你解压安装包的目录，回车
         ```Powershell
@@ -112,7 +113,7 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
    命令 `Add-AppxPackage -Register .\AppxManifest.xml` 做的是使用一些解压过后的文件来注册 appx 包，所以您需要一直保留这个文件夹直到您想要卸载 WSA
    访问 https://learn.microsoft.com/zh-cn/powershell/module/appx/add-appxpackage?view=windowsserver2022-ps 获取更多信息
 2. 您需要注册 WSA appx 包才可以运行 WSA。 
-   对于 [WSAOnWin10](https://github.com/A-JiuA/WSAOnWin10) 和 [MagiskOnWSALocal](https://github.com/LSPosed/MagiskOnWSALocal) 您需要运行解压文件夹中的 `Run.bat`
+   对于 [WSAOnWin10](https://github.com/A-JiuA/WSAOnWin10) 和 [MagiskOnWSALocal](https://github.com/LSPosed/MagiskOnWSALocal) 用户，您需要运行解压文件夹中的 `Run.bat`
    
    如果脚本不工作，您可以使用下列步骤进行诊断 (需要管理员权限):
     1. 打开 PowerShell 将工作目录改为您的 WSA 安装文件夹
@@ -274,7 +275,7 @@ Start-Process "wsa://com.android.settings"
 
 **Magisk 在线模块列表是空的？**
 
-- Magisk主动移除在线模块存储库。您可以在本地安装 Magisk module 或通过以下步骤安装
+- Magisk主动移除了在线模块存储库。您可以在本地安装 Magisk module 或通过以下步骤安装
   
    **步骤 1** 
       
