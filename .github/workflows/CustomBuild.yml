@@ -231,7 +231,7 @@ jobs:
       - name: Compress Files
         run: |
           cd output
-          7z a -tzip -mx9 -sdel -r "${{ steps.name.outputs.foldername }}.zip" "${{ steps.name.outputs.foldername }}"
+          7z a -tzip -mx1 -mmt2 -sdel -r "${{ steps.name.outputs.foldername }}.zip" "${{ steps.name.outputs.foldername }}"
 
       - name: Remove unused artifact
         uses: geekyeggo/delete-artifact@v2
