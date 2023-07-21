@@ -241,7 +241,7 @@ jobs:
       - name: File Checksum
         shell: pwsh
         run: |
-          (Get-FileHash -Path "${{ steps.name.outputs.foldername }}.zip" -Algorithm SHA256).Hash | Out-File -FilePath "sha256-checksum.txt"
+          (Get-FileHash -Path "output\${{ steps.name.outputs.foldername }}.zip" -Algorithm SHA256).Hash | Out-File -FilePath "sha256-checksum.txt"
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
