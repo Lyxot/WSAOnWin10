@@ -247,7 +247,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ steps.name.outputs.foldername }}
-          path: |
-            output/${{ steps.name.outputs.foldername }}.zip
-            sha256-checksum.txt
+          path: output/${{ steps.name.outputs.foldername }}.zip
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sha256-checksum
+          path: sha256-checksum.txt
 
