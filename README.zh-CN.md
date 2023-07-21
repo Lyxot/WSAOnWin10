@@ -189,15 +189,18 @@ Start-Process "wsa://com.android.settings"
 #### **1. 首先检查 [Releases 页面](https://github.com/A-JiuA/WSAOnWin10/releases/)中的构建。如果不包含你想要的构建，继续跟随这个教程。如果包含，请使用那些预构建的 WSA**
 
 #### **2. 访问[这个链接](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build)，然后根据你想要的构建填写信息，点击 `Submit New Issues` (绿色按钮) 并等待**
-[image]
+![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/771f3ef0-8a0f-4c0e-9092-8bf71117d685)
+
 
 #### **3. 大约20分钟后，github-actions[bot] 会回复你的构建已完成 (如下图)，打开回复中的链接**
-[image]
+![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/9c1bbf14-2765-4754-81bc-342116933653)
+
 
 #### **4. 下载 `Artifacts` 中的文件**
 **不要使用多线程下载器下载构建，如 IDM**
 
-[image]
+![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/ba0ccaa7-d3de-4f9c-88f9-8d1bcc373296)
+
 
 #### **5. 参照[安装](#安装)章节进行安装**
 
@@ -209,11 +212,13 @@ Start-Process "wsa://com.android.settings"
 > **注意** : 
 > 请不要胡乱提交 dll 文件，并正确填写相关信息
 
-#### **1. 访问[这个链接](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=UploadDll&projects=&template=UploadDll.yml&title=Upload+Original+Dll+File)，然后根据镜像填写相关信息**
-[image]
-#### **2. 大约5分钟后，github-actions[bot] 会回复下载已完成 (如下图)，打开回复中的链接可以查看日志，`Artifacts`中的文件为提取出的 dll 文件**
-[image]
-#### **3. Github Actions 会将提取出的 dll 文件自动上传，无需其它操作**
+#### **1. 访问[这个链接](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=UploadDll&projects=&template=UploadDll.yml&title=Upload+Original+Dll+File)，然后根据镜像填写相关信息。如果您对所填写的信息十分确定，勾选 `Upload` 复选框；如果您不能确定，请不要勾选 `Upload` 复选框。点击 `Submit New Issues` (绿色按钮) 并等待**
+![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/b0a69b64-88ed-44b3-bb33-dc02889276a2)
+
+#### **2. 大约5分钟后，github-actions[bot] 会回复下载已完成 (如下图)，打开回复中的链接可以查看日志，`Artifacts` 中的文件为提取出的 dll 文件**
+![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/815f5a86-cdcb-4c7e-ab5c-088129ac51fa)
+
+#### **3. 如果您勾选了 `Upload` 复选框，Github Actions 会将提取出的 dll 文件自动上传，无需其它操作。如果您没有勾选 `Upload` 复选框，可以对日志和提取出的 dll 文件进行检查，根据情况重新执行以上步骤**
 > 如果您不能提供 Windows 11 镜像的链接，请手动提取 `icu.dll` 与 `winhttp.dll` 后提交 Pull Requests
 
 ## FAQ
