@@ -19,7 +19,7 @@ os.system('echo "version='+version+'" >> "$GITHUB_OUTPUT"')
 if last_version == version:
     exit()
 file_list = os.listdir('.')
-file_list.sort(reverse=True)
+file_list.sort()
 with open('Changelog.md','w') as f:
     f.write('# Changelog\n')
     f.write('## Update WSA Version From `'+last_version+'` to `'+version+'`\n')
