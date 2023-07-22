@@ -59,7 +59,7 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
 
 > 如果你想要保留数据 (官方 或 MagiskOnWSA)，你可以在卸载前备份 `%LOCALAPPDATA%\Packages\MicrosoftCorporationII.WindowsSubsystemForAndroid_8wekyb3d8bbwe\LocalCache\userdata.vhdx` 并在安装后恢复它。查看[**备份与恢复**](#备份与恢复)来获得更全面和详细的教程
 
-1. 访问 [Releases 页面](https://github.com/A-JiuA/WSAOnWin10/releases/latest)
+1. 访问 [Releases 页面](https://github.com/A-JiuA/WSAOnWin10/releases)
 2. 在最新的 Release 中，点击 Assets 并下载你选择的 Windows Subsystem For Android™ 版本 (不要下载 "Source code")
 
 > **注意** : 
@@ -73,7 +73,7 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
     - 输入下方的命令，将 `WSA_2XXX.XXXXX.X.X_XXXX_Release-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X` 替换为你下载安装包的文件名，回车
 
     `certutil -hashfile "WSA_2XXX.XXXXX.X.X_XXXX_Release-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X" SHA256`
-    - 对比输出的哈希值与 [Release 页面](https://github.com/A-JiuA/WSAOnWin10/releases/latest)中的哈希值，或 Artifacts 中的 `sha256-checksum.txt` 中的哈希值
+    - 对比输出的哈希值与 [Release 页面](https://github.com/A-JiuA/WSAOnWin10/releases)中的哈希值，或 Artifacts 中的 `sha256-checksum.txt` 中的哈希值
     > **注意** : 
     > 如果哈希值不一致，请尝试重新下载安装包，**不要安装!!!**
 4. 解压安装包
@@ -288,7 +288,7 @@ Start-Process "wsa://com.android.settings"
 
 **如何卸载 Magisk？**
 
-- 在 [Releases 页面](https://github.com/A-JiuA/WSAOnWin10/releases/latest)中下载一个不包含 Magisk 的构建，或使用 [Issues](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build) 创建一个[自定义构建](#自定义构建)，然后参照[升级](#升级)章节
+- 在 [Releases 页面](https://github.com/A-JiuA/WSAOnWin10/releases)中下载一个不包含 Magisk 的构建，或使用 [Issues](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build) 创建一个[自定义构建](#自定义构建)，然后参照[升级](#升级)章节
 
 **如何安装 KernelSU Manager**
 

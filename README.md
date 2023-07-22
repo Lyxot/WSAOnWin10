@@ -59,7 +59,7 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
 
 > In case you want to preserve your data from the previous installation (official or MagiskOnWSA), you can backup `%LOCALAPPDATA%\Packages\MicrosoftCorporationII.WindowsSubsystemForAndroid_8wekyb3d8bbwe\LocalCache\userdata.vhdx` before uninstallation and restore it after installation. For a more comprehensive and detailed guide, take a look at the [Backup and Restore section](#backup-and-restore-userdata)
 
-1. Go to the [Releases page](https://github.com/A-JiuA/WSAOnWin10/releases/latest)
+1. Go to the [Releases page](https://github.com/A-JiuA/WSAOnWin10/releases)
 2. In the latest release, go to the Assets section and download the Windows Subsystem For Android™ version of your choosing (do not download "Source code")
 
 > **Note** : 
@@ -73,7 +73,7 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
     - Input the command below and press enter, replacing `WSA_2XXX.XXXXX.X.X_XXXX_Release-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X` with the name of the archive package
 
     `certutil -hashfile "WSA_2XXX.XXXXX.X.X_XXXX_Release-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X" SHA256`
-    - Compare the SHA256 output with ones at Release or in the sha256-checksum.txt (if you download artifact from the Custom Build task).
+    - Compare the SHA256 output with ones at [Releases page](https://github.com/A-JiuA/WSAOnWin10/releases) or in the sha256-checksum.txt (if you download artifact from the Custom Build task).
     > **Note** :
     > If package don't have the same SHA-256 Hash, please download then check again. **DO NOT INSTALL!!!**
 4. Extract the zip file
@@ -286,7 +286,7 @@ This repository uses Issues and Github Actions to automatically fetch dll files 
 
 **How do I uninstall Magisk?**
 
-- Request, using [Issues](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build), a Windows Subsystem For Android™ version that doesn't include Magisk from the [Releases page](https://github.com/A-JiuA/WSAOnWin10/releases/latest). Then follow the [Updating instructions](#updating)
+- Request, using [Issues](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build), a Windows Subsystem For Android™ version that doesn't include Magisk from the [Releases page](https://github.com/A-JiuA/WSAOnWin10/releases). Then follow the [Updating instructions](#updating)
 
 **How to install KernelSU Manager?**
 
