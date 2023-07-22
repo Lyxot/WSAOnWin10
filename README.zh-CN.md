@@ -10,15 +10,15 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
 <thead>
   <tr>
     <th></th>
-    <th><img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Windows_11_logo.svg" style="width: 200px;"/></th>
-    <th><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" style="width: 200px;"/></th>
+    <th><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Windows_11_logo.svg/320px-Windows_11_logo.svg.png" style="width: 200px;"/></th>
+    <th><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Windows_10_Logo.svg/320px-Windows_10_Logo.svg.png" style="width: 200px;"/></th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td><img style="float: right;"/><h4>Windows 版本<h4></td>
-    <td>Windows™ 11: Build 22000.526 或更高</td>
-    <td>Windows™ 10: 22H2 (Build 10.0.19045.2311) 或更高 (推荐)<br /> Windows™ 10: 20H2 (Build 10.0.19042.2604) (最低) <br /><br /><b>请确保安装了 <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB5014032" target="_blank" rel="noopener noreferrer">KB5014032</a> 及 <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB5022834" target="_blank" rel="noopener noreferrer">KB5022834</a> 补丁<b><br /><br /><b></td>
+    <td>Windows™ 11: 21H2 Build 22000.526 或更高</td>
+    <td>Windows™ 10: 22H2 Build 10.0.19045.2311 或更高 (推荐)<br /> Windows™ 10: 20H2 Build 10.0.19042.2604 (最低) <br /><br /><b>请确保安装了 <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB5014032" target="_blank" rel="noopener noreferrer">KB5014032</a> 及 <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB5022834" target="_blank" rel="noopener noreferrer">KB5022834</a> 补丁<b><br /><br /><b></td>
   </tr>
   <tr>
     <td><img style="float: right;" /><h4>内存<h4></td>
