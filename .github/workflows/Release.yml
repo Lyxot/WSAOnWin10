@@ -82,12 +82,24 @@ jobs:
           if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf ./MagiskOnWSALocal/output/*;rm -rf ./MagiskOnWSALocal/download/*;./MagiskOnWSALocal/scripts/build.sh --release-type retail --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
           if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then exit 1;fi
           cp DLLs/${{ matrix.arch }}/*.dll MagiskOnWSALocal/output/*/WsaClient/
+      
+      - id: name
+        shell: bash
+        run: echo "foldername=$(ls MagiskOnWSALocal/output)" >> $GITHUB_OUTPUT
+
+      - name: Copy Installer
+        run: cp installer/* "MagiskOnWSALocal/output/${{ steps.name.outputs.foldername }}"
+
+      - name: Compress files
+        run: |
+          cd MagiskOnWSALocal/output
+          7z a -tzip -mx1 -mmt2 -sdel -r "${{ steps.name.outputs.foldername }}.zip" "${{ steps.name.outputs.foldername }}"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
-          path: MagiskOnWSALocal/output
+          path: MagiskOnWSALocal/output/${{ steps.name.outputs.foldername }}.zip
 
   make-pri:
     name: Merge language resource
@@ -107,6 +119,16 @@ jobs:
         with:
           path: ./output/
           name: ${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
+
+      - id: filename
+        shell: bash
+        run: echo "filename=$(ls output)" >> $GITHUB_OUTPUT
+
+      - name: Extract files
+        run: |
+          cd output
+          7z x "${{ steps.filename.outputs.filename }}"
+          rm "${{ steps.filename.outputs.filename }}"
 
       - id: name
         shell: bash
