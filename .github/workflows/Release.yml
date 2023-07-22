@@ -29,7 +29,7 @@ jobs:
           export WSA_WORK_ENV="ENV"
           cd MagiskOnWSALocal/scripts
           touch ENV
-          result=$(python3 generateWSALinks.py x64 WIF download wsa.zip | grep "WSA Build Version")
+          result=$(python3 generateWSALinks.py x64 retail download wsa.zip | grep "WSA Build Version")
           echo ${result// /_} >> "$GITHUB_OUTPUT"
       - name: Get Latest Release
         id: get_latest_release
@@ -77,9 +77,9 @@ jobs:
 
       - name: Build WSA ${{ matrix.arch }} With ${{ matrix.root-sol }} ROOT and ${{ matrix.gapps-brand }} GAPPS
         run: |
-          ./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }}
-          if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf ./MagiskOnWSALocal/output/*;rm -rf ./MagiskOnWSALocal/download/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
-          if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf ./MagiskOnWSALocal/output/*;rm -rf ./MagiskOnWSALocal/download/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
+          ./MagiskOnWSALocal/scripts/build.sh --release-type retail --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }}
+          if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf ./MagiskOnWSALocal/output/*;rm -rf ./MagiskOnWSALocal/download/*;./MagiskOnWSALocal/scripts/build.sh --release-type retail --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
+          if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf ./MagiskOnWSALocal/output/*;rm -rf ./MagiskOnWSALocal/download/*;./MagiskOnWSALocal/scripts/build.sh --release-type retail --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi
           if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then exit 1;fi
           cp DLLs/${{ matrix.arch }}/*.dll MagiskOnWSALocal/output/*/WsaClient/
 
