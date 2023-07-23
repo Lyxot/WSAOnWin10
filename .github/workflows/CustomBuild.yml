@@ -162,6 +162,8 @@ jobs:
 
       - name: Custom Command
         run: ${{ inputs.custom_command }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build WSA
         run: |
