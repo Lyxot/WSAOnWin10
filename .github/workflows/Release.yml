@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
+    input:
+      custom_command:
+        description: "custom command"
+        default: ""
+        type: string
   schedule:
     - cron: '0 */3 * * *'
 
@@ -74,6 +79,9 @@ jobs:
           pip3 install -r MagiskOnWSALocal/scripts/requirements.txt
           sudo apt update
           sudo apt install -y 7zip lzip patchelf e2fsprogs python3 aria2 attr unzip whiptail qemu-utils p7zip-full python3-venv wine winetricks
+
+      - name: Custom Command
+        run: ${{ inputs.custom_command }}
 
       - name: Build WSA ${{ matrix.arch }} With ${{ matrix.root-sol }} ROOT and ${{ matrix.gapps-brand }} GAPPS
         run: |

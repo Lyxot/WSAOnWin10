@@ -27,6 +27,10 @@ on:
         description: "Remove Amazon Appstore from the system"
         required: true
         type: string
+      custom_command:
+        description: "custom command"
+        default: ""
+        type: string
   workflow_dispatch:
     inputs:
       arch:
@@ -71,6 +75,10 @@ on:
         required: true
         default: true
         type: boolean
+      custom_command:
+        description: "custom command"
+        default: ""
+        type: string
 
 jobs:
   get_arg:
@@ -151,6 +159,9 @@ jobs:
           pip3 install -r MagiskOnWSALocal/scripts/requirements.txt
           sudo apt update
           sudo apt install -y 7zip lzip patchelf e2fsprogs python3 aria2 attr unzip whiptail qemu-utils p7zip-full python3-venv wine winetricks
+
+      - name: Custom Command
+        run: ${{ inputs.custom_command }}
 
       - name: Build WSA
         run: |

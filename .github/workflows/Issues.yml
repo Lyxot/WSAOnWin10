@@ -133,6 +133,7 @@ jobs:
       magisk_ver: ${{ needs.get_arg_cb.outputs.magisk_ver }}
       gapps_brand: ${{ needs.get_arg_cb.outputs.gapps_brand }}
       remove_amazon: ${{ needs.get_arg_cb.outputs.remove_amazon }}
+      custom_command: ""
 
   comment_cb_2:
     needs: custom_build
