@@ -1,7 +1,7 @@
 # WSAOnWin10
 ### 本项目基于 [MagiskOnWSA](https://github.com/LSPosed/MagiskOnWSALocal) 与 [WSAPatch](https://github.com/cinit/WSAPatch)，使用 Github Actions 自动构建 WSA，整合 Magisk、Google Apps 并使其可以在 Windows 10 上运行
 ### 本项目仅确保在 Windows 10 上的稳定运行(Windows 11 理论上也能用)，如果您是 Windows 11 用户，最好使用 [WSA-Script](https://github.com/YT-Advanced/WSA-Script)
-English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSAOnWin10/blob/master/README.zh-CN.md))
+[English](README.md) | 简体中文 ([国内](https://gitee.com/A-JiuA/WSAOnWin10/blob/master/README.zh-CN.md))
 
 ---
 ## 系统要求
