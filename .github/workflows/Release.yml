@@ -82,8 +82,11 @@ jobs:
 
       - name: Custom Command
         if: github.event_name == 'workflow_dispatch'
-        run: ${{ inputs.custom_command }}
+        run: |
+          if [ ${LATEST_VERSION%%.*} -ge 2306  ];then cd MagiskOnWSALocal && gh pr checkout 620;fi
+          ${{ inputs.custom_command }}
         env:
+          LATEST_VERSION: ${{ needs.check.outputs.latest_version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build WSA ${{ matrix.arch }} With ${{ matrix.root-sol }} ROOT and ${{ matrix.gapps-brand }} GAPPS
