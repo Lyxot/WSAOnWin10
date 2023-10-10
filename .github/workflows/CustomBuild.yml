@@ -161,8 +161,15 @@ jobs:
           sudo apt install -y 7zip lzip patchelf e2fsprogs python3 aria2 attr unzip whiptail qemu-utils p7zip-full python3-venv wine winetricks
 
       - name: Custom Command
-        run: ${{ inputs.custom_command }}
+        run: |
+          ${{ inputs.custom_command }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: fix 2306
+        run: if [ ${LATEST_VERSION%%.*} -ge 2306  ];then cd MagiskOnWSALocal && gh pr checkout 620;fi
+        env:
+          LATEST_VERSION: ${{ needs.check.outputs.latest_version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build WSA

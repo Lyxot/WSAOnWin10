@@ -83,8 +83,12 @@ jobs:
       - name: Custom Command
         if: github.event_name == 'workflow_dispatch'
         run: |
-          if [ ${LATEST_VERSION%%.*} -ge 2306  ];then cd MagiskOnWSALocal && gh pr checkout 620;fi
           ${{ inputs.custom_command }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: fix 2306
+        run: if [ ${LATEST_VERSION%%.*} -ge 2306  ];then cd MagiskOnWSALocal && gh pr checkout 620;fi
         env:
           LATEST_VERSION: ${{ needs.check.outputs.latest_version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
