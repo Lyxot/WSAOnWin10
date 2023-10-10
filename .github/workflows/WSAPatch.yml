@@ -11,7 +11,7 @@ on:
     paths:
       - .github/workflow/WSAPatch.yml
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '0 0 * * *'
 
 env:
   # Path to the solution file relative to the root of the project.
