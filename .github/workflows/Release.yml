@@ -96,8 +96,7 @@ jobs:
       - name: Build WSA ${{ matrix.arch }} With ${{ matrix.root-sol }} ROOT and ${{ matrix.gapps-brand }} GAPPS
         run: |
           bash -c './MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }}' || true
-          bash -c 'if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf ./MagiskOnWSALocal/output/*;rm -rf ./MagiskOnWSALocal/download/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi' || true
-          bash -c 'if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then rm -rf ./MagiskOnWSALocal/output/*;rm -rf ./MagiskOnWSALocal/download/*;./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};fi' || true
+          bash -c 'while [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];do rm -rf ./MagiskOnWSALocal/output/* && rm -rf ./MagiskOnWSALocal/download/* && ./MagiskOnWSALocal/scripts/build.sh --release-type WIF --remove-amazon --arch ${{ matrix.arch }} --root-sol ${{ matrix.root-sol }} --gapps-brand ${{ matrix.gapps-brand }};done' || true
           if [[ $(ls ./MagiskOnWSALocal/output/) != *${{ needs.check.outputs.latest_version }}* ]];then exit 1;fi
           cp DLLs/${{ matrix.arch }}/*.dll MagiskOnWSALocal/output/*/WsaClient/
       
