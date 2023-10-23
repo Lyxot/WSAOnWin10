@@ -139,10 +139,10 @@ jobs:
 
   check:
     name: Check Update
+    needs: get_arg
     runs-on: ubuntu-latest
     outputs:
       latest_version: ${{ steps.get.outputs.WSA_Build_Version }}
-      current_version: ${{ steps.get_latest_release.outputs.tag_name }}
     steps:
       - name: Clone Repository
         run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
@@ -160,21 +160,11 @@ jobs:
           export WSA_WORK_ENV="ENV"
           cd MagiskOnWSALocal/scripts
           touch ENV
-          result=$(python3 generateWSALinks.py x64 WIF download wsa.zip | grep "WSA Build Version")
+          result=$(python3 generateWSALinks.py ${{ needs.get_arg.outputs.arch }} ${{ needs.get_arg.outputs.release_type }} download wsa.zip | grep "WSA Build Version")
           echo ${result// /_} >> "$GITHUB_OUTPUT"
-      - name: Get Latest Release
-        id: get_latest_release
-        uses: joutvhu/get-release@v1
-        with:
-          latest: true
-          prerelease: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Echo
         run: |
-          echo "CURRENT_VERSION=${{ steps.get_latest_release.outputs.tag_name }}"
           echo "LATEST_VERSION=${{ steps.get.outputs.WSA_Build_Version }}"
-          if [[ ${{ steps.get_latest_release.outputs.tag_name }} != ${{ steps.get.outputs.WSA_Build_Version }} ]];then echo "Need to Update";fi
 
   build:
     name: Build WSA
