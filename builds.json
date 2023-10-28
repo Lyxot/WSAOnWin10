@@ -141,5 +141,16 @@
         "sha256": "d0b29d3fd3750c7a6df9e303dd8cd6ac1beb390215d5fba6e35cbeb478f56f6c",
         "url": "https://github.com/A-JiuA/WSAOnWin10/actions/runs/6675822673",
         "timestamp": 1698482435.9962683
+    },
+    "WSA_2308.40000.4.0_x64_Release-Nightly-NoGApps-RemovedAmazon": {
+        "filename": "WSA_2308.40000.4.0_x64_Release-Nightly-NoGApps-RemovedAmazon.zip",
+        "type": "Build",
+        "version": "2308.40000.4.0",
+        "arch": "x64",
+        "root_sol": "none",
+        "gapps_brand": "none",
+        "sha256": "eafce5e4e4378fc03602313de4f24db455ef29d832809587a1ab8a21b2fa6337",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/actions/runs/6676271057",
+        "timestamp": 1698488991.2234287
     }
 }
