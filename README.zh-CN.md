@@ -5,6 +5,8 @@
 
 <img src="https://img.shields.io/badge/docs-stable-lime"/> <img src="https://img.shields.io/github/license/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/downloads/A-JiuA/WSAOnWin10/total"/> <a href="https://github.com/A-JiuA/WSAOnWin10/releases"><img src="https://img.shields.io/github/stars/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/release/A-JiuA/WSAOnWin10"/></a> <a href="https://github.com/A-JiuA/WSAOnWin10/blob/master/builds.md"><img src="https://img.shields.io/badge/history%20builds-C95863"/></a>
 
+**在[这里](https://github.com/A-JiuA/WSAOnWin10/releases)下载 Release, 在[这里](https://github.com/A-JiuA/WSAOnWin10/blob/master/builds.md)找到所有构建**
+
 ---
 ## 系统要求
 

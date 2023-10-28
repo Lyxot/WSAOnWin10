@@ -1,9 +1,11 @@
 # WSAOnWin10
-### This Repository is base on [MagiskOnWSA](https://github.com/LSPosed/MagiskOnWSALocal) and [WSAPatch](https://github.com/cinit/WSAPatch), uses Gihub Actions to automatically integrate Magisk root and Google Apps into WSA and make it run on Windows 10
+### This Repository is based on [MagiskOnWSA](https://github.com/LSPosed/MagiskOnWSALocal) and [WSAPatch](https://github.com/cinit/WSAPatch), uses Gihub Actions to automatically integrate Magisk root and Google Apps into WSA and make it run on Windows 10
 ### This project only ensures stable running on Windows 10 (also can work on Windows 11 in theory), if you are using Windows 11, [WSA-Script](https://github.com/YT-Advanced/WSA-Script) is a better choice.
 English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSAOnWin10/blob/master/README.zh-CN.md))
 
 <img src="https://img.shields.io/badge/docs-stable-lime"/> <img src="https://img.shields.io/github/license/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/downloads/A-JiuA/WSAOnWin10/total"/> <a href="https://github.com/A-JiuA/WSAOnWin10/releases"><img src="https://img.shields.io/github/stars/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/release/A-JiuA/WSAOnWin10"/></a> <a href="https://github.com/A-JiuA/WSAOnWin10/blob/master/builds.md"><img src="https://img.shields.io/badge/history%20builds-C95863"/></a>
+
+**Download latest release [here](https://github.com/A-JiuA/WSAOnWin10/releases), and find all builds [here](https://github.com/A-JiuA/WSAOnWin10/blob/master/builds.md)**
 
 ---
 ## System Requirement
