@@ -331,10 +331,11 @@ jobs:
       - name: Update builds.json
         run: |
           python scripts/BuildInfo.py "${{ steps.name.outputs.foldername }}" "${{ needs.check.outputs.latest_version }}" ${{ needs.get_arg.outputs.arch }} ${{ needs.get_arg.outputs.root_sol }} ${{ needs.get_arg.outputs.magisk_ver }} ${{ needs.get_arg.outputs.gapps_brand }} ${{ github.run_id }}
+          python scripts/BuildHistory.py
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git config --global user.name github-actions[bot]
-          git add builds.json
-          git commit -m "Update builds.json: Build ${{ steps.name.outputs.foldername }}"
+          git add builds.json builds.md
+          git commit -m "Update builds.json & builds.md: Build ${{ steps.name.outputs.foldername }}"
 
       - name: Push changes
         uses: ad-m/github-push-action@master

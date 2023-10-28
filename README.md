@@ -3,7 +3,7 @@
 ### This project only ensures stable running on Windows 10 (also can work on Windows 11 in theory), if you are using Windows 11, [WSA-Script](https://github.com/YT-Advanced/WSA-Script) is a better choice.
 English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSAOnWin10/blob/master/README.zh-CN.md))
 
-<img src="https://img.shields.io/badge/docs-stable-lime"/> <img src="https://img.shields.io/github/license/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/downloads/A-JiuA/WSAOnWin10/total"/> <img src="https://img.shields.io/github/stars/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/release/A-JiuA/WSAOnWin10"/>
+<img src="https://img.shields.io/badge/docs-stable-lime"/> <img src="https://img.shields.io/github/license/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/downloads/A-JiuA/WSAOnWin10/total"/> <a href="https://github.com/A-JiuA/WSAOnWin10/releases"><img src="https://img.shields.io/github/stars/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/release/A-JiuA/WSAOnWin10"/></a> <a href="https://github.com/A-JiuA/WSAOnWin10/blob/master/builds.md"><img src="https://img.shields.io/badge/history%20builds-C95863"/></a>
 
 ---
 ## System Requirement

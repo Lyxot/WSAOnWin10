@@ -28,7 +28,7 @@ with open('Changelog.md','w') as f:
     f.write('### Update WSA Version From `'+current_version+'` to `'+latest_version+'`\n')
     f.write(txt)
     f.write('## Information\n')
-    f.write('| |Filename|Root|GApps|\n|-|-|-|-|\n')
+    f.write('| |Filename|Root|GApps|\n|-|-|:-:|:-:|\n')
     for i in file_list:
         with open('output/release_'+i+'/info.json', 'r') as j:
             d = json.load(j)
