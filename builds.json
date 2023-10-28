@@ -130,5 +130,16 @@
         "sha256": "be24e66f2ff39a3f215286bc4967a0c0c7900542a865499ef34eff1c85fe734b",
         "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2309.40000.10.0/WSA_2309.40000.10.0_x64_Release.zip",
         "timestamp": 1698472618.928029
+    },
+    "WSA_2308.40000.4.0_x64_Release-Nightly-with-kernelsu-v0.7.0-NoGApps-RemovedAmazon": {
+        "filename": "WSA_2308.40000.4.0_x64_Release-Nightly-with-kernelsu-v0.7.0-NoGApps-RemovedAmazon.zip",
+        "type": "Build",
+        "version": "2308.40000.4.0",
+        "arch": "x64",
+        "root_sol": "kernelsu",
+        "gapps_brand": "none",
+        "sha256": "d0b29d3fd3750c7a6df9e303dd8cd6ac1beb390215d5fba6e35cbeb478f56f6c",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/actions/runs/6675822673",
+        "timestamp": 1698482435.9962683
     }
 }
