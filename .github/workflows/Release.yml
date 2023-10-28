@@ -58,7 +58,7 @@ jobs:
     strategy:
       matrix:
         arch: ['x64', 'arm64']
-        root-sol: ['none', 'magisk']
+        root-sol: ['none', 'magisk', 'kernelsu']
         gapps-brand: ['none', 'MindTheGapps']
     steps:
       - name: Checkout
@@ -121,11 +121,11 @@ jobs:
   make-pri:
     name: Merge language resource
     runs-on: windows-latest
-    needs: build
+    needs: [check, build]
     strategy:
       matrix:
         arch: ['x64', 'arm64']
-        root-sol: ['none', 'magisk']
+        root-sol: ['none', 'magisk', 'kernelsu']
         gapps-brand: ['none', 'MindTheGapps']
     steps:
       - name: Checkout
@@ -198,10 +198,15 @@ jobs:
          'detach vdisk' >> product.txt
          $p = Start-Process -NoNewWindow -Wait -PassThru "diskpart.exe" "/s product.txt"
 
-      - name: Compress Files
+      - id: compress
+        name: Compress Files
+        shell: bash
         run: |
           cd output
           7z a -tzip -mx9 -sdel -r "${{ steps.name.outputs.foldername }}.zip" "${{ steps.name.outputs.foldername }}"
+          export filename=$(python ../scripts/ReleaseFile.py "${{ needs.check.outputs.latest_version }}" ${{ matrix.arch }} ${{ matrix.root-sol }} ${{ matrix.gapps-brand }} "${{ steps.name.outputs.foldername }}")
+          echo "filename=$filename" >> $GITHUB_OUTPUT
+          mv "${{ steps.name.outputs.foldername }}.zip" "$filename.zip"
 
       - name: Remove unused artifact
         uses: geekyeggo/delete-artifact@v2
@@ -211,16 +216,19 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.name.outputs.foldername }}
-          path: output/${{ steps.name.outputs.foldername }}.zip
+          name: release_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }}
+          path: |
+            output/${{ steps.compress.outputs.filename }}.zip
+            output/info.json
 
   upload:
-    needs: make-pri
+    name: Upload Releases
+    needs: [check, make-pri]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
+
       - name: Set up Python 3.9
         uses: actions/setup-python@v4
         with:
@@ -231,29 +239,45 @@ jobs:
         with:
           path: ./output/
 
-      - name: Get Latest Release
-        id: get_latest_release
-        uses: joutvhu/get-release@v1
-        with:
-          latest: true
-          prerelease: true
+      - name: Generate Release Body
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Generate Release Files
-        id: generate_release_files
-        env:
-          LATEST_TAG: ${{ steps.get_latest_release.outputs.tag_name }}
+          LATEST_VERSION: ${{ needs.check.outputs.latest_version }}
+          CURRENT_VERSION: ${{ needs.check.outputs.current_version }}
+        run: python3 scripts/ReleaseBody.py
+
+      - name: Commit
         run: |
+          git config --global user.email github-actions[bot]@users.noreply.github.com
+          git config --global user.name github-actions[bot]
+          git add releases.json
+          git commit -m "Update releases.json: (${{ needs.check.outputs.latest_version }})"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: |
           mkdir release
           mv output/*/*.zip release/
-          cd release
-          python3 ../scripts/generate_release.py
-    
+
       - name: Release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.generate_release_files.outputs.version }}
-          bodyFile: "release/Changelog.md"
+          allowUpdates: true
+          tag: ${{ needs.check.outputs.latest_version }}
+          bodyFile: "Changelog.md"
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "release/*.zip"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ReleaseBody
+          path: Changelog.md
+  
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ReleaseJson
+          path: releases.json

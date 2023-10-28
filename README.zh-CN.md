@@ -3,6 +3,8 @@
 ### 本项目仅确保在 Windows 10 上的稳定运行(Windows 11 理论上也能用)，如果您是 Windows 11 用户，最好使用 [WSA-Script](https://github.com/YT-Advanced/WSA-Script)
 [English](README.md) | 简体中文 ([国内](https://gitee.com/A-JiuA/WSAOnWin10/blob/master/README.zh-CN.md))
 
+<img src="https://img.shields.io/badge/docs-stable-lime"/> <img src="https://img.shields.io/github/license/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/downloads/A-JiuA/WSAOnWin10/total"/> <img src="https://img.shields.io/github/stars/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/release/A-JiuA/WSAOnWin10"/>
+
 ---
 ## 系统要求
 
