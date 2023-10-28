@@ -249,8 +249,8 @@ jobs:
         run: |
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git config --global user.name github-actions[bot]
-          git add releases.json
-          git commit -m "Update releases.json: (${{ needs.check.outputs.latest_version }})"
+          git add builds.json
+          git commit -m "Update builds.json: Release ${{ needs.check.outputs.latest_version }}"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
@@ -280,4 +280,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ReleaseJson
-          path: releases.json
+          path: builds.json

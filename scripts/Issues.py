@@ -20,7 +20,7 @@ else:
             list.remove(i)
 
 if sys.argv[1] == "Custom Build" and len(list) != 5:
-    if not (list[0] in arch_dist and list[1] in release_type_dist and list[2] in root_sol_dist and list[3] in gapps_brand_dist and list[4] in ["- [ ] Remove Amazon","- [X] Remove Amazon"]):
+    if not (list[0] in arch_dist and list[1] in release_type_dist and list[2] in root_sol_dist and list[3] in gapps_brand_dist):
         os.system("echo isSuccess=false >> $GITHUB_OUTPUT")
         exit()
 elif sys.argv[1] == "Upload Original Dll File" and len(list) != 7:
@@ -36,10 +36,7 @@ if sys.argv[1] == "Custom Build" or sys.argv[1] == "Custom Build(workflow_dispat
     magisk_ver = root_sol_dist[list[2]][1]
     gapps_brand = gapps_brand_dist[list[3]]
     if sys.argv[1] == "Custom Build":
-        if list[4] == "- [ ] Remove Amazon":
-            remove_amazon = ""
-        else:
-            remove_amazon = "--remove-amazon"
+        remove_amazon = "--remove-amazon"
     elif sys.argv[1] == "Custom Build(workflow_dispatch)":
         if list[4] == "true":
             remove_amazon = "--remove-amazon"

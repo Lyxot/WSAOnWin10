@@ -229,7 +229,7 @@ jobs:
   make-pri:
     name: Merge language resource
     runs-on: windows-latest
-    needs: build
+    needs: [get_arg, check, build]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -328,3 +328,15 @@ jobs:
           name: sha256-checksum
           path: sha256-checksum.txt
 
+      - name: Update builds.json
+        run: |
+          python scripts/BuildInfo.py "${{ steps.name.outputs.foldername }}" "${{ needs.check.outputs.latest_version }}" ${{ needs.get_arg.outputs.arch }} ${{ needs.get_arg.outputs.root_sol }} ${{ needs.get_arg.outputs.magisk_ver }} ${{ needs.get_arg.outputs.gapps_brand }} ${{ github.run_id }}
+          git config --global user.email github-actions[bot]@users.noreply.github.com
+          git config --global user.name github-actions[bot]
+          git add builds.json
+          git commit -m "Update builds.json: Build ${{ steps.name.outputs.foldername }}"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

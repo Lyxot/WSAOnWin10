@@ -46,9 +46,7 @@ body:
         - No GApps
     validations:
       required: true
-  - type: checkboxes
+  - type: markdown
     id: remove_amazon
     attributes:
-      label: Remove Amazon
-      options:
-        - label: Remove Amazon
+      value: "- [x] Remove Amazon"

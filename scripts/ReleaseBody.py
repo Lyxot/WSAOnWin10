@@ -50,11 +50,11 @@ with open('Changelog.md','w') as f:
 with open('Changelog.md', 'r') as f:
     print(f.read())
 
-with open('releases.json', 'r') as f:
+with open('builds.json', 'r') as f:
     data = json.load(f)
 for i in file_list:
     with open('output/release_'+i+'/info.json', 'r') as j:
         d = json.load(j)
         data.update(d)
-with open('releases.json', 'w') as f:
+with open('builds.json', 'w') as f:
     json.dump(data, f, indent=4)
