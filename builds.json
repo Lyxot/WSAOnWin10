@@ -867,5 +867,16 @@
         "sha256": "aec323056bedfa5d9b111f33d9f69c751d18a4c69884091d63279fe8ca36341d",
         "url": "https://github.com/A-JiuA/WSAOnWin10/actions/runs/6677706836",
         "timestamp": 1698507928.6063328
+    },
+    "WSA_2308.40000.4.0_x64_Release-Nightly-OpenGApps-11.0-pico-RemovedAmazon": {
+        "filename": "WSA_2308.40000.4.0_x64_Release-Nightly-OpenGApps-11.0-pico-RemovedAmazon.zip",
+        "type": "Build",
+        "version": "2308.40000.4.0",
+        "arch": "x64",
+        "root_sol": "none",
+        "gapps_brand": "OpenGApps",
+        "sha256": "871cf805e8093aa3437fc8cf0efffe344e8dd79b5ee2eba9c883d46c3b3680a4",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/actions/runs/6613623997",
+        "timestamp": 1698067407.0
     }
 }
