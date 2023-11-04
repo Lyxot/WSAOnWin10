@@ -3,9 +3,9 @@
 ### This project only ensures stable running on Windows 10 (also can work on Windows 11 in theory), if you are using Windows 11, [WSA-Script](https://github.com/YT-Advanced/WSA-Script) is a better choice.
 English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSAOnWin10/blob/master/README.zh-CN.md))
 
-<img src="https://img.shields.io/badge/docs-stable-lime"/> <img src="https://img.shields.io/github/license/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/downloads/A-JiuA/WSAOnWin10/total"/> <a href="https://github.com/A-JiuA/WSAOnWin10/releases"><img src="https://img.shields.io/github/stars/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/release/A-JiuA/WSAOnWin10"/></a> <a href="https://github.com/A-JiuA/WSAOnWin10/blob/master/builds.md"><img src="https://img.shields.io/badge/history%20builds-C95863"/></a>
+<img src="https://img.shields.io/badge/docs-stable-lime"/> <img src="https://img.shields.io/github/license/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/downloads/A-JiuA/WSAOnWin10/total"/> <a href="https://github.com/A-JiuA/WSAOnWin10/releases"><img src="https://img.shields.io/github/stars/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/release/A-JiuA/WSAOnWin10"/></a> <a href="builds.md"><img src="https://img.shields.io/badge/history%20builds-C95863"/></a>
 
-**Download latest release [here](https://github.com/A-JiuA/WSAOnWin10/releases), and find all builds [here](https://github.com/A-JiuA/WSAOnWin10/blob/master/builds.md)**
+**Download latest release [here](https://github.com/A-JiuA/WSAOnWin10/releases), and find all builds [here](builds.md)**
 
 ---
 ## System Requirement
@@ -299,6 +299,10 @@ This repository uses Issues and Github Actions to automatically fetch dll files 
 
   `adb shell ksuinstall`
 - If the installation completes successfully, the KernelSU Manager will launching.
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=A-JiuA/WSAOnWin10&type=Date)](https://star-history.com/#A-JiuA/WSAOnWin10&Date)
 
 ## Credits
 - [Microsoft](https://apps.microsoft.com/store/detail/windows-subsystem-for-android%E2%84%A2-with-amazon-appstore/9P3395VX91NR): For providing Windows Subsystem For Android™ and related files. Windows Subsystem For Android™, Windows Subsystem For Android™ Logo, Windows™ 10 and Windows™ 11 Logos are trademarks of Microsoft Corporation. Microsoft Corporation reserves all rights to these trademarks. By downloading and installing Windows Subsystem For Android™, you agree to the [Terms and Conditions](https://support.microsoft.com/en-gb/windows/microsoft-software-license-terms-microsoft-windows-subsystem-for-android-cf8dfb03-ba62-4daa-b7f3-e2cb18f968ad) and [Privacy Policy](https://privacy.microsoft.com/en-gb/privacystatement)
