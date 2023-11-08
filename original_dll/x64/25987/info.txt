@@ -1,0 +1,5 @@
+Arch: x64
+Version: 23H2
+Build: 25987
+Download URL: https://software.download.prss.microsoft.com/dbazure/Windows_InsiderPreview_Server_vNext_zh-cn_25987.iso?t=d7ead044-eaf0-4d95-bcf4-e3fc4a0d2bc5&e=1699503632&h=edae656ec4fd2c27a624fce4362f8cd2dde9ea1115e15598ceef4b6679d3e77f
+Format: .iso
