@@ -1010,5 +1010,16 @@
         "sha256": "84668c2497d59024327d6a948624731a82359c51d9ef5a0a21c7295d6ef98c5c",
         "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2310.40000.2.0/WSA_2310.40000.2.0_x64_Release.zip",
         "timestamp": 1700005318.2069578
+    },
+    "WSA_2310.40000.2.0_x64_Release-Nightly-with-magisk-aa6c7c15(26401)-canary-MindTheGapps-13.0-RemovedAmazon": {
+        "filename": "WSA_2310.40000.2.0_x64_Release-Nightly-with-magisk-aa6c7c15(26401)-canary-MindTheGapps-13.0-RemovedAmazon.zip",
+        "type": "Build",
+        "version": "2310.40000.2.0",
+        "arch": "x64",
+        "root_sol": "magisk canary",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "6a56bba33fa9d73be44ef66cfca0964803ba30e60d304cde1e097f63e2e00b28",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/actions/runs/6875587446",
+        "timestamp": 1700042605.157841
     }
 }
