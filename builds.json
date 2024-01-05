@@ -1285,5 +1285,137 @@
         "sha256": "0be2db6967d829aeab48e9500a21fe9ae8069f7d4eded292693d7c36afad7aa6",
         "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.4.0/WSA_2311.40000.4.0_x64_Release.zip",
         "timestamp": 1702590089.6732004
+    },
+    "WSA_2311.40000.5.0_arm64_Release-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "none",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "2d719062265de60cd6fd985ac52191080cd6b1c87727029de059879db556ce13",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-MindTheGapps-13.0.zip",
+        "timestamp": 1704492613.541638
+    },
+    "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "kernelsu",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "8fcabe1dd6e154a4e07e246d97934fe2cfb3a19e287519b87aac28f89436bb32",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0.zip",
+        "timestamp": 1704492625.8544157
+    },
+    "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.7.2": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.7.2.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "kernelsu",
+        "gapps_brand": "none",
+        "sha256": "8f165a8a7982e2c9dffb1b4cabaa522176ce72ab3b6d9bd3fd1acdbed7969da5",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.7.2.zip",
+        "timestamp": 1704492141.428679
+    },
+    "WSA_2311.40000.5.0_arm64_Release-with-magisk-26.4-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release-with-magisk-26.4-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "magisk",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "05002f9a69565148e0431901f80d9f9f76973a14789f2fd79dc8b0cadccc0e16",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-with-magisk-26.4-MindTheGapps-13.0.zip",
+        "timestamp": 1704492610.2363029
+    },
+    "WSA_2311.40000.5.0_arm64_Release-with-magisk-26.4": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release-with-magisk-26.4.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "magisk",
+        "gapps_brand": "none",
+        "sha256": "7c4ac88ca3088e796dd93e4d3cf00e6bc43c72cda418dc6c38a701ea1ed0a926",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-with-magisk-26.4.zip",
+        "timestamp": 1704492153.4055777
+    },
+    "WSA_2311.40000.5.0_arm64_Release": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "none",
+        "gapps_brand": "none",
+        "sha256": "d50ff10bc4521ec910216f701411628c450fde3a2ed44182099b5ea15de33d75",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release.zip",
+        "timestamp": 1704492134.845861
+    },
+    "WSA_2311.40000.5.0_x64_Release-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "none",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "0cc7e8a28343a71a712896d2e3d311502ab016c13b9f3fb125f47ede6440cdbb",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-MindTheGapps-13.0.zip",
+        "timestamp": 1704492520.484755
+    },
+    "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "kernelsu",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "dadc46bf242242afb5de77f3d659445185bee7b17c1217815b8aa0b8e790f854",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0.zip",
+        "timestamp": 1704492532.6146753
+    },
+    "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.7.2": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.7.2.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "kernelsu",
+        "gapps_brand": "none",
+        "sha256": "ab8a63be37240ed4efd90fbdb42501c50de4dcaf8c90bcb7c6b6b231a206d7a3",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.7.2.zip",
+        "timestamp": 1704492268.2031076
+    },
+    "WSA_2311.40000.5.0_x64_Release-with-magisk-26.4-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-with-magisk-26.4-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "magisk",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "2e62c675f847fda8b8447a0c691152150c29ae895f35540e064be3654b537c11",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-with-magisk-26.4-MindTheGapps-13.0.zip",
+        "timestamp": 1704492539.0405018
+    },
+    "WSA_2311.40000.5.0_x64_Release-with-magisk-26.4": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-with-magisk-26.4.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "magisk",
+        "gapps_brand": "none",
+        "sha256": "c94410042a63bcaac4bac89751eb50bc9ee20161e0a4e5bd28785ca98e553f40",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-with-magisk-26.4.zip",
+        "timestamp": 1704492266.1506336
+    },
+    "WSA_2311.40000.5.0_x64_Release": {
+        "filename": "WSA_2311.40000.5.0_x64_Release.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "none",
+        "gapps_brand": "none",
+        "sha256": "5d793b6ef5dd03a6ba979a6788ee5fa64fdc282c9530c9bc7898426d0837359d",
+        "url": "https://github.com/A-JiuA/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release.zip",
+        "timestamp": 1704492250.0814722
     }
 }
