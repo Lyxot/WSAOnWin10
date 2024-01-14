@@ -27,7 +27,7 @@ j = {
         'root_sol': root_sol,
         'gapps_brand': gapps_brand,
         'sha256': hash,
-        'url': 'https://github.com/A-JiuA/WSAOnWin10/releases/download/'+version+'/'+name+'.zip',
+        'url': 'https://github.com/Lyxot/WSAOnWin10/releases/download/'+version+'/'+name+'.zip',
         'timestamp': time.time()
     }
 }

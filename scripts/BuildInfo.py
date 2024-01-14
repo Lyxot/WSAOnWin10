@@ -25,7 +25,7 @@ j = {
         'root_sol': root_sol,
         'gapps_brand': gapps_brand,
         'sha256': hash,
-        'url': 'https://github.com/A-JiuA/WSAOnWin10/actions/runs/'+workflow_id,
+        'url': 'https://github.com/Lyxot/WSAOnWin10/actions/runs/'+workflow_id,
         'timestamp': time.time()
     }
 }

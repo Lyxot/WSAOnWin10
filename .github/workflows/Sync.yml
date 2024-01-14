@@ -17,5 +17,5 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
         with:
-          source-repo: git@github.com:A-JiuA/WSAOnWin10.git
+          source-repo: git@github.com:Lyxot/WSAOnWin10.git
           destination-repo: git@gitee.com:A-JiuA/WSAOnWin10.git

@@ -9,7 +9,7 @@ with open('./builds.json', 'r') as f:
 # Sort build_data by filename in ascending order and then by version in descending order
 build_data = sorted(build_data.values(), key=lambda x: (x['filename'], x['version']), reverse=True)
 
-url = "https://api.github.com/repos/A-JiuA/WSAOnWin10/releases"
+url = "https://api.github.com/repos/Lyxot/WSAOnWin10/releases"
 i = 1
 tags = []
 while True:

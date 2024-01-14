@@ -3,9 +3,9 @@
 ### This project only ensures stable running on Windows 10 (also can work on Windows 11 in theory), if you are using Windows 11, [WSA-Script](https://github.com/YT-Advanced/WSA-Script) is a better choice.
 English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSAOnWin10/blob/master/README.zh-CN.md))
 
-<img src="https://img.shields.io/badge/docs-stable-lime"/> <img src="https://img.shields.io/github/license/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/downloads/A-JiuA/WSAOnWin10/total"/> <a href="https://github.com/A-JiuA/WSAOnWin10/releases"><img src="https://img.shields.io/github/stars/A-JiuA/WSAOnWin10"/> <img src="https://img.shields.io/github/release/A-JiuA/WSAOnWin10"/></a> <a href="builds.md"><img src="https://img.shields.io/badge/history%20builds-C95863"/></a>
+<img src="https://img.shields.io/badge/docs-stable-lime"/> <img src="https://img.shields.io/github/license/Lyxot/WSAOnWin10"/> <img src="https://img.shields.io/github/downloads/Lyxot/WSAOnWin10/total"/> <a href="https://github.com/Lyxot/WSAOnWin10/releases"><img src="https://img.shields.io/github/stars/Lyxot/WSAOnWin10"/> <img src="https://img.shields.io/github/release/Lyxot/WSAOnWin10"/></a> <a href="builds.md"><img src="https://img.shields.io/badge/history%20builds-C95863"/></a>
 
-**Download latest release [here](https://github.com/A-JiuA/WSAOnWin10/releases), and find all builds [here](builds.md)**
+**Download latest release [here](https://github.com/Lyxot/WSAOnWin10/releases), and find all builds [here](builds.md)**
 
 ---
 ## System Requirement
@@ -63,11 +63,11 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
 
 > In case you want to preserve your data from the previous installation (official or MagiskOnWSA), you can backup `%LOCALAPPDATA%\Packages\MicrosoftCorporationII.WindowsSubsystemForAndroid_8wekyb3d8bbwe\LocalCache\userdata.vhdx` before uninstallation and restore it after installation. For a more comprehensive and detailed guide, take a look at the [Backup and Restore section](#backup-and-restore-userdata)
 
-1. Go to the [Releases page](https://github.com/A-JiuA/WSAOnWin10/releases)
+1. Go to the [Releases page](https://github.com/Lyxot/WSAOnWin10/releases)
 2. In the latest release, go to the Assets section and download the Windows Subsystem For Android™ version of your choosing (do not download "Source code")
 
 > **Note** : 
-> If you want to build your custom build, please open an [Issue](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build)，and then download the Artifact from Github Actions. Please visit [Custom Build](#custom-build) for more information.
+> If you want to build your custom build, please open an [Issue](https://github.com/Lyxot/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build)，and then download the Artifact from Github Actions. Please visit [Custom Build](#custom-build) for more information.
 
 3. Check integrity of downloaded file
     - Press Win + X on your keyboard and select Windows™ Terminal (Admin) or Powershell (Admin) depending on the version of Windows™ you are running
@@ -77,7 +77,7 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
     - Input the command below and press enter, replacing `WSA_2XXX.XXXXX.X.X_XXXX_Release-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X` with the name of the archive package
 
     `certutil -hashfile "WSA_2XXX.XXXXX.X.X_XXXX_Release-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X" SHA256`
-    - Compare the SHA256 output with ones at [Releases page](https://github.com/A-JiuA/WSAOnWin10/releases) or in the sha256-checksum.txt (if you download artifact from the Custom Build task).
+    - Compare the SHA256 output with ones at [Releases page](https://github.com/Lyxot/WSAOnWin10/releases) or in the sha256-checksum.txt (if you download artifact from the Custom Build task).
     > **Note** :
     > If package don't have the same SHA-256 Hash, please download then check again. **DO NOT INSTALL!!!**
 4. Extract the zip file
@@ -118,7 +118,7 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
    so you need to keep them as long as you want to use Windows Subsystem For Android™. 
    Check https://learn.microsoft.com/en-us/powershell/module/appx/add-appxpackage?view=windowsserver2022-ps for more details.
 2. You need to register your Windows Subsystem For Android™ appx package before you can run Windows Subsystem For Android™. 
-   For [WSAOnWin10](https://github.com/A-JiuA/WSAOnWin10) and [MagiskOnWSALocal](https://github.com/LSPosed/MagiskOnWSALocal) users, you need to run `Run.bat` in the extracted dir.
+   For [WSAOnWin10](https://github.com/Lyxot/WSAOnWin10) and [MagiskOnWSALocal](https://github.com/LSPosed/MagiskOnWSALocal) users, you need to run `Run.bat` in the extracted dir.
 
    If the script fails, you can take the following steps for diagnosis (admin privilege required):
     1. Open a PowerShell window and change working directory to your Windows Subsystem For Android™ directory.
@@ -137,7 +137,7 @@ English | [简体中文](README.zh-CN.md) ([国内](https://gitee.com/A-JiuA/WSA
 ## Updating
 ### How do I update without losing any of my apps and data on Windows Subsystem for Android (WSA)
 
-1. [Download the build](https://github.com/A-JiuA/WSAOnWin10/releases) that you want to update to
+1. [Download the build](https://github.com/Lyxot/WSAOnWin10/releases) that you want to update to
 2. Make sure Windows Subsystem For Android is not running (Click on "Turn off" in the WSA Settings and wait for the spinning loader to disappear)
 2. Using 7-Zip, WinRAR or any other tool of choice, open the .zip file 
 3. Within the .zip archive open the subfolder (Example: WSA_2XXX.XXXXX.X.X_XXXX_Release-with-magisk-XXXXXXX-XXXXXX-MindTheGapps-XX.X)
@@ -193,34 +193,34 @@ Now run WSA and your serdata should hopefully be restored
 |**If you want to create your Custom Build, please follow the instructions set out clearly, to avoid the repo from being taken down as a result of a misuse of Github Actions due to the large number of forks. AND ALSO if you want to build with Latest Insider version, please skip the first 7 steps**|
 
 
-#### **1. Check the version from [Releases](https://github.com/A-JiuA/WSAOnWin10/releases/) first. If it does not have the version you want, continue to follow this guide. If it does, then feel free to use those prebuild WSA builds**
+#### **1. Check the version from [Releases](https://github.com/Lyxot/WSAOnWin10/releases/) first. If it does not have the version you want, continue to follow this guide. If it does, then feel free to use those prebuild WSA builds**
 
-#### **2. Open [this page directly](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build) then choose the option that you want to build. Then you click "Submit New Issues" (green button) and wait.**
-![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/771f3ef0-8a0f-4c0e-9092-8bf71117d685)
+#### **2. Open [this page directly](https://github.com/Lyxot/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build) then choose the option that you want to build. Then you click "Submit New Issues" (green button) and wait.**
+![image](https://github.com/Lyxot/WSAOnWin10/assets/34974508/771f3ef0-8a0f-4c0e-9092-8bf71117d685)
 
 #### **3. After about 20 minutes, the bot will reply that the workflow have built successfully (like the picture below), OPEN THE LINK BELOW THE BOT COMMENT**
-![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/9c1bbf14-2765-4754-81bc-342116933653)
+![image](https://github.com/Lyxot/WSAOnWin10/assets/34974508/9c1bbf14-2765-4754-81bc-342116933653)
 
 #### **4. Download the package as artifact**
 **DO NOT download it via multithread downloaders like IDM**
 
-![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/ba0ccaa7-d3de-4f9c-88f9-8d1bcc373296)
+![image](https://github.com/Lyxot/WSAOnWin10/assets/34974508/ba0ccaa7-d3de-4f9c-88f9-8d1bcc373296)
 
 #### **5. Install like normal using [the instructions](#installation) in this repository**
 
 ## How to Upload `icu.dll` and `winhttp.dll` from Windows 11 images
 > `icu.dll` and `winhttp.dll` in Windows 11 images are the key to WSA running on Windows 10, because some functions do not exist the above dll files in Windows 10 images. All builds provided by this repository already contain the dll files mentioned above, as well as' WSAPatch.dll ', so you can ignore this section if you are just using the builds provided by this repository
 
-This repository uses Issues and Github Actions to automatically fetch dll files in Windows 11 images and inject 'WSAPatch.dll'. Visit [this link](https://github.com/A-JiuA/WSAOnWin10/tree/master/original_dll) to see the dll files already in the repository. If you wish to submit an updated dll file, follow these steps
+This repository uses Issues and Github Actions to automatically fetch dll files in Windows 11 images and inject 'WSAPatch.dll'. Visit [this link](https://github.com/Lyxot/WSAOnWin10/tree/master/original_dll) to see the dll files already in the repository. If you wish to submit an updated dll file, follow these steps
 
 > **Note**
 > Please do not upload the dll file arbitrarily, and fill in the information correctly
 
-#### **1. Visit [this link](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=UploadDll&projects=&template=UploadDll.yml&title=Upload+Original+Dll+File), then fill in the information according to the image. If you are sure about the information you fill in, select the 'Upload' check box; If you are not sure, do not select the 'Upload' check box. Then you click "Submit New Issues" (green button) and wait.**
-![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/b0a69b64-88ed-44b3-bb33-dc02889276a2)
+#### **1. Visit [this link](https://github.com/Lyxot/WSAOnWin10/issues/new?assignees=&labels=UploadDll&projects=&template=UploadDll.yml&title=Upload+Original+Dll+File), then fill in the information according to the image. If you are sure about the information you fill in, select the 'Upload' check box; If you are not sure, do not select the 'Upload' check box. Then you click "Submit New Issues" (green button) and wait.**
+![image](https://github.com/Lyxot/WSAOnWin10/assets/34974508/b0a69b64-88ed-44b3-bb33-dc02889276a2)
 
 #### **2. After about 5 minutes, the bot will reply that the download have finished successfully (like the picture below), open the link below the bot comment to view the log. The files in Artifacts are the fetched dll files**
-![image](https://github.com/A-JiuA/WSAOnWin10/assets/34974508/815f5a86-cdcb-4c7e-ab5c-088129ac51fa)
+![image](https://github.com/Lyxot/WSAOnWin10/assets/34974508/815f5a86-cdcb-4c7e-ab5c-088129ac51fa)
 
 #### **3. If you selected the 'Upload' check box, Github Actions will automatically upload fetched dll files. If you didn't, you can check the log and fetched dll files, and then repeat the steps above according to the situation**
 > If you cannot provide the link of Windows 11 images, please fetch `icu.dll` and `winhttp.dll` manually, and then open a pull request.
@@ -228,11 +228,11 @@ This repository uses Issues and Github Actions to automatically fetch dll files 
 ## FAQ
 **Help me, I am having problems with the MagiskOnWSA Builds**
 
-- Open an [issue in Github](https://github.com/A-JiuA/WSAOnWin10/issues) and describe the issue with sufficent detail
+- Open an [issue in Github](https://github.com/Lyxot/WSAOnWin10/issues) and describe the issue with sufficent detail
 
 **Help me, I am having problems with installing Windows Subsystem For Android™ on Windows™ 10**
 
-- I am not working on the patch, and nor claim to.  Open an [issue in Github](https://github.com/A-JiuA/WSAOnWin10/issues), and I will try to assist you with the problem if possible. For full support visit the project homepage and open an [Issue](https://github.com/cinit/WSAPatch/issues/) there
+- I am not working on the patch, and nor claim to.  Open an [issue in Github](https://github.com/Lyxot/WSAOnWin10/issues), and I will try to assist you with the problem if possible. For full support visit the project homepage and open an [Issue](https://github.com/cinit/WSAPatch/issues/) there
 
 **How do I get a logcat?**
 - There are two ways:
@@ -249,11 +249,11 @@ This repository uses Issues and Github Actions to automatically fetch dll files 
 
 **How can I update Windows Subsystem For Android™ to a new version?**
 
-- As Explained [Updating instructions](#updating). Download the [Windows Subsystem For Android™ Version](https://github.com/A-JiuA/WSAOnWin10/releases) that you want to update to and replace the content of your previous installation and rerun `Install.ps1`. Don't worry, your data will be preserved
+- As Explained [Updating instructions](#updating). Download the [Windows Subsystem For Android™ Version](https://github.com/Lyxot/WSAOnWin10/releases) that you want to update to and replace the content of your previous installation and rerun `Install.ps1`. Don't worry, your data will be preserved
 
 **How do I update Magisk?**
 
-- Do the same as updating Windows Subsystem For Android™.  Wait for a new [MagiskOnWSA release](https://github.com/A-JiuA/WSAOnWin10/releases) that includes the newer Magisk version, then follow the [Updating instructions](#updating) to update
+- Do the same as updating Windows Subsystem For Android™.  Wait for a new [MagiskOnWSA release](https://github.com/Lyxot/WSAOnWin10/releases) that includes the newer Magisk version, then follow the [Updating instructions](#updating) to update
 
 **Can I pass SafetyNet/Play Integrity?**
 
@@ -290,7 +290,7 @@ This repository uses Issues and Github Actions to automatically fetch dll files 
 
 **How do I uninstall Magisk?**
 
-- Request, using [Issues](https://github.com/A-JiuA/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build), a Windows Subsystem For Android™ version that doesn't include Magisk from the [Releases page](https://github.com/A-JiuA/WSAOnWin10/releases). Then follow the [Updating instructions](#updating)
+- Request, using [Issues](https://github.com/Lyxot/WSAOnWin10/issues/new?assignees=&labels=CustomBuild&projects=&template=CustomBuild.yml&title=Custom+Build), a Windows Subsystem For Android™ version that doesn't include Magisk from the [Releases page](https://github.com/Lyxot/WSAOnWin10/releases). Then follow the [Updating instructions](#updating)
 
 **How to install KernelSU Manager?**
 
@@ -302,7 +302,7 @@ This repository uses Issues and Github Actions to automatically fetch dll files 
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=A-JiuA/WSAOnWin10&type=Date)](https://star-history.com/#A-JiuA/WSAOnWin10&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=Lyxot/WSAOnWin10&type=Date)](https://star-history.com/#Lyxot/WSAOnWin10&Date)
 
 ## Credits
 - [Microsoft](https://apps.microsoft.com/store/detail/windows-subsystem-for-android%E2%84%A2-with-amazon-appstore/9P3395VX91NR): For providing Windows Subsystem For Android™ and related files. Windows Subsystem For Android™, Windows Subsystem For Android™ Logo, Windows™ 10 and Windows™ 11 Logos are trademarks of Microsoft Corporation. Microsoft Corporation reserves all rights to these trademarks. By downloading and installing Windows Subsystem For Android™, you agree to the [Terms and Conditions](https://support.microsoft.com/en-gb/windows/microsoft-software-license-terms-microsoft-windows-subsystem-for-android-cf8dfb03-ba62-4daa-b7f3-e2cb18f968ad) and [Privacy Policy](https://privacy.microsoft.com/en-gb/privacystatement)
