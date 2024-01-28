@@ -1417,5 +1417,16 @@
         "sha256": "5d793b6ef5dd03a6ba979a6788ee5fa64fdc282c9530c9bc7898426d0837359d",
         "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release.zip",
         "timestamp": 1704492250.0814722
+    },
+    "WSA_2311.40000.5.0_x64_Release-Nightly-OpenGApps-11.0-pico-RemovedAmazon": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-Nightly-OpenGApps-11.0-pico-RemovedAmazon.zip",
+        "type": "Build",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "none",
+        "gapps_brand": "OpenGApps",
+        "sha256": "fe198a0a7c0450d14165822b00ac1fed893c55658534e051fbdbadfaba381fb3",
+        "url": "https://github.com/Lyxot/WSAOnWin10/actions/runs/7684525844",
+        "timestamp": 1706431572.7476315
     }
 }
