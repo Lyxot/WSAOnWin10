@@ -93,9 +93,9 @@ jobs:
       remove_amazon: ${{ steps.ga.outputs.remove_amazon }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           check-latest: true
           python-version: '3.9'
@@ -147,7 +147,7 @@ jobs:
       - name: Clone Repository
         run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           check-latest: true
           python-version: '3.9'
@@ -172,13 +172,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Clone Repository
         run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           check-latest: true
           python-version: '3.9'
@@ -221,7 +221,7 @@ jobs:
           7z a -tzip -mx1 -mmt2 -sdel -r "${{ steps.name.outputs.foldername }}.zip" "${{ steps.name.outputs.foldername }}"
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tmp
           path: MagiskOnWSALocal/output/${{ steps.name.outputs.foldername }}.zip
@@ -232,10 +232,10 @@ jobs:
     needs: [get_arg, check, build]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./output/
           name: tmp
@@ -317,13 +317,13 @@ jobs:
           (Get-FileHash -Path "output\${{ steps.name.outputs.foldername }}.zip" -Algorithm SHA256).Hash | Out-File -FilePath "sha256-checksum.txt"
         
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.name.outputs.foldername }}
           path: output/${{ steps.name.outputs.foldername }}.zip
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sha256-checksum
           path: sha256-checksum.txt
