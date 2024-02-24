@@ -28,14 +28,6 @@ on:
         description: 'Upload'
         required: true
         type: string
-      email:
-        description: 'Email'
-        required: true
-        type: string
-      username:
-        description: 'Username'
-        required: true
-        type: string
   workflow_dispatch:
     inputs:
       arch:
@@ -76,14 +68,6 @@ on:
           - true
           - false
         default: 'false'
-      email:
-        description: 'Email'
-        required: true
-        type: string
-      username:
-        description: 'Username'
-        required: true
-        type: string
 
 env:
   ARCH: ${{ inputs.arch }}
@@ -92,8 +76,6 @@ env:
   URL: ${{ inputs.url }}
   FORMAT: ${{ inputs.format }}
   UPLOAD: ${{ inputs.upload }}
-  EMAIL: ${{ inputs.email }}
-  USERNAME: ${{ inputs.username }}
 
 jobs:
   download:
@@ -200,8 +182,8 @@ jobs:
       - name: commit
         if: ${{ inputs.upload }} == 'true'
         run: |
-          git config --global user.email $EMAIL
-          git config --global user.name $USERNAME
+          git config --global user.email github-actions[bot]@users.noreply.github.com
+          git config --global user.name github-actions[bot]
           git add original_dll/$ARCH/$BUILD
           git commit -m "Upload original dlls from $VERSION $ARCH build $BUILD"
           git pull

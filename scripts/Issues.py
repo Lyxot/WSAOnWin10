@@ -54,11 +54,7 @@ elif sys.argv[1] == "Upload Original Dll File":
     os.system("echo build='"+list[2]+"' >> $GITHUB_OUTPUT")
     os.system("echo url='"+list[3]+"' >> $GITHUB_OUTPUT")
     os.system("echo format='"+list[4]+"' >> $GITHUB_OUTPUT")
-    os.system("echo email='"+list[5]+"' >> $GITHUB_OUTPUT")
     os.system("echo username='"+USERNAME+"' >> $GITHUB_OUTPUT")
-    if list[6] == "- [ ] Upload":
-        os.system("echo upload=false >> $GITHUB_OUTPUT")
-    else:
-        os.system("echo upload=true >> $GITHUB_OUTPUT")
+    os.system("echo upload=false >> $GITHUB_OUTPUT")
 
 os.system("echo isSuccess=true >> $GITHUB_OUTPUT")
