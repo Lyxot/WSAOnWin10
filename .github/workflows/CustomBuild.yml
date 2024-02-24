@@ -333,6 +333,7 @@ jobs:
           python scripts/BuildInfo.py "${{ steps.name.outputs.foldername }}" "${{ needs.check.outputs.latest_version }}" ${{ needs.get_arg.outputs.arch }} ${{ needs.get_arg.outputs.root_sol }} ${{ needs.get_arg.outputs.magisk_ver }} ${{ needs.get_arg.outputs.gapps_brand }} ${{ github.run_id }}
           pip install requests
           python scripts/BuildHistory.py
+          git pull
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git config --global user.name github-actions[bot]
           git add builds.json builds.md
