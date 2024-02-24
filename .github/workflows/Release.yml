@@ -21,7 +21,7 @@ jobs:
       - name: Clone Repository
         run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           check-latest: true
           python-version: '3.9'
@@ -62,13 +62,13 @@ jobs:
         gapps-brand: ['none', 'MindTheGapps']
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Clone Repository
         run: git clone https://github.com/LSPosed/MagiskOnWSALocal.git
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           check-latest: true
           python-version: '3.9'
@@ -113,7 +113,7 @@ jobs:
           7z a -tzip -mx1 -mmt2 -sdel -r "${{ steps.name.outputs.foldername }}.zip" "${{ steps.name.outputs.foldername }}"
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
           path: MagiskOnWSALocal/output/${{ steps.name.outputs.foldername }}.zip
@@ -129,10 +129,10 @@ jobs:
         gapps-brand: ['none', 'MindTheGapps']
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./output/
           name: ${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }} 
@@ -214,7 +214,7 @@ jobs:
           name: ${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }}
         
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: release_${{ matrix.arch }}_${{ matrix.root-sol }}_${{ matrix.gapps-brand }}
           path: |
@@ -227,15 +227,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.9
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.9
 
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./output/
 
@@ -273,13 +273,13 @@ jobs:
           artifacts: "release/*.zip"
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ReleaseBody
           path: Changelog.md
   
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ReleaseJson
           path: builds.json

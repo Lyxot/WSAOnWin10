@@ -25,7 +25,7 @@ jobs:
       is_update: ${{ steps.check.outputs.is_update }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Clone Repository
         run: |
@@ -47,7 +47,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Clone Repository
         run: |
@@ -81,7 +81,7 @@ jobs:
           copy build/Release/WsaPatch.dll ../../DLLs/arm64
 
       - name: Upload WsaPatch.dll
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: WsaPatch-build
           path: DLLs
