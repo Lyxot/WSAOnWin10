@@ -182,11 +182,11 @@ jobs:
       - name: commit
         if: github.event.inputs.upload== 'true'
         run: |
+          git pull
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git config --global user.name github-actions[bot]
           git add original_dll/$ARCH/$BUILD
           git commit -m "Upload original dlls from $VERSION $ARCH build $BUILD"
-          git pull
           
       - name: Push changes
         if: github.event.inputs.upload== 'true'
