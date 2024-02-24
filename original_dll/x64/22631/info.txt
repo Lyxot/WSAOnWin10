@@ -1,0 +1,5 @@
+Arch: x64
+Version: 23H2
+Build: 22631
+Download URL: https://software.download.prss.microsoft.com/dbazure/Win11_23H2_EnglishInternational_x64v2.iso?t=1a8f6c6f-c903-46f1-9794-233d33a3759d&P1=1708867864&P2=601&P3=2&P4=kXAK7NoDrDPbjXjUiEYnFAJlevPY3xcNz7i%2bcMW8SUKP%2f8tjEHQ7mLIsAoTSxCnCGcTKFaSoKumSGuqsLNWt8FntDdrtZUUO%2fAMl8LGloSGyJj4%2fQq6N5FcOkrq8RZJMD%2bsZ5TRaRaf7Qcdx%2fzjwuU4ZaIEH0Xob%2fpDO7cV%2fx2kIuREdmYZWHKz8Tw25WA%2bIshIm1d7x%2fFzd051nc%2fnkwPmJxU5r%2fa30s7%2buClodWEwRVsqHXKxMKntBhQ24GMDOdsYbQ%2bj1JZA8nzdGgPSUl2%2bZId3Rw5VPRBb%2bGzzHOTg6xbuS9wkb0hx7gLKB%2f2eJrhqHhggfheQFnx5uXp4C9g%3d%3d
+Format: .iso
