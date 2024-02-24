@@ -95,7 +95,6 @@ jobs:
       url: ${{ steps.ga_d.outputs.url }}
       format: ${{ steps.ga_d.outputs.format }}
       upload: ${{ steps.ga_d.outputs.upload }}
-      email: ${{ steps.ga_d.outputs.email }}
       username: ${{ steps.ga_d.outputs.username }}
       isSuccess: ${{ steps.ga_d.outputs.isSuccess }}
     runs-on: ubuntu-latest
@@ -237,8 +236,6 @@ jobs:
       url: ${{ needs.get_arg_dd.outputs.url }}
       format: ${{ needs.get_arg_dd.outputs.format }}
       upload: ${{ needs.get_arg_dd.outputs.upload }}
-      email: ${{ needs.get_arg_dd.outputs.email }}
-      username: ${{ needs.get_arg_dd.outputs.username }}
 
   comment_dd_2:
     needs: download_dll
