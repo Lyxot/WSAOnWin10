@@ -1,5 +1,4 @@
 import json
-import requests
 from datetime import datetime
 
 # Read the contents of build.json file
@@ -9,19 +8,11 @@ with open('./builds.json', 'r') as f:
 # Sort build_data by filename in ascending order and then by version in descending order
 build_data = sorted(build_data.values(), key=lambda x: (x['filename'], x['version']), reverse=True)
 
-url = "https://api.github.com/repos/Lyxot/WSAOnWin10/releases"
-i = 1
-tags = []
-while True:
-    params = {"per_page": 100, "page": i}
-    response = requests.get(url, params=params)
-    data = json.loads(response.text)
-    if data == []:
-        break
-    else:
-        tags += [release["tag_name"] for release in data]
-    i+=1
-version_list = tags
+
+version_list = []
+for i in build_data:
+    if i['version'] not in version_list:
+        version_list.append(i['version'])
 
 md_table = ""
 

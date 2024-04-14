@@ -1293,9 +1293,9 @@
         "arch": "arm64",
         "root_sol": "none",
         "gapps_brand": "MindTheGapps",
-        "sha256": "2d719062265de60cd6fd985ac52191080cd6b1c87727029de059879db556ce13",
-        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-MindTheGapps-13.0.zip",
-        "timestamp": 1704492613.541638
+        "sha256": "4a8d92727c553c8ab10d9f81b12955a76c71e95089642412edc01c5e18f63e70",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0-20240414/WSA_2311.40000.5.0_arm64_Release-MindTheGapps-13.0.zip",
+        "timestamp": 1713084684.998249
     },
     "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0": {
         "filename": "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0.zip",
@@ -1348,9 +1348,9 @@
         "arch": "arm64",
         "root_sol": "none",
         "gapps_brand": "none",
-        "sha256": "d50ff10bc4521ec910216f701411628c450fde3a2ed44182099b5ea15de33d75",
-        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release.zip",
-        "timestamp": 1704492134.845861
+        "sha256": "159e39480286ed8836718d54b60fa0d2ff3c90b696a6492c15511c28e2c90f73",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0-20240414/WSA_2311.40000.5.0_arm64_Release.zip",
+        "timestamp": 1713084406.8045452
     },
     "WSA_2311.40000.5.0_x64_Release-MindTheGapps-13.0": {
         "filename": "WSA_2311.40000.5.0_x64_Release-MindTheGapps-13.0.zip",
@@ -1359,9 +1359,9 @@
         "arch": "x64",
         "root_sol": "none",
         "gapps_brand": "MindTheGapps",
-        "sha256": "0cc7e8a28343a71a712896d2e3d311502ab016c13b9f3fb125f47ede6440cdbb",
-        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-MindTheGapps-13.0.zip",
-        "timestamp": 1704492520.484755
+        "sha256": "9c2dccd3e41552d9a38d3906f5464d0f706108b28baab9bb9677fb987ddbf682",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0-20240414/WSA_2311.40000.5.0_x64_Release-MindTheGapps-13.0.zip",
+        "timestamp": 1713084622.1875439
     },
     "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0": {
         "filename": "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.7.2-MindTheGapps-13.0.zip",
@@ -1414,9 +1414,9 @@
         "arch": "x64",
         "root_sol": "none",
         "gapps_brand": "none",
-        "sha256": "5d793b6ef5dd03a6ba979a6788ee5fa64fdc282c9530c9bc7898426d0837359d",
-        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release.zip",
-        "timestamp": 1704492250.0814722
+        "sha256": "885dc44e5b40d4e93e0e565f1830b5ed0108592a38289981e5bcddc56f5247bd",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0-20240414/WSA_2311.40000.5.0_x64_Release.zip",
+        "timestamp": 1713084358.1117084
     },
     "WSA_2311.40000.5.0_x64_Release-Nightly-OpenGApps-11.0-pico-RemovedAmazon": {
         "filename": "WSA_2311.40000.5.0_x64_Release-Nightly-OpenGApps-11.0-pico-RemovedAmazon.zip",
@@ -1428,5 +1428,93 @@
         "sha256": "fe198a0a7c0450d14165822b00ac1fed893c55658534e051fbdbadfaba381fb3",
         "url": "https://github.com/Lyxot/WSAOnWin10/actions/runs/7684525844",
         "timestamp": 1706431572.7476315
+    },
+    "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.9.2-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.9.2-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "kernelsu",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "7b6cddd58d4b87a418b55108bbe236b9fbab11a24561a569e809e0a50660fdc3",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.9.2-MindTheGapps-13.0.zip",
+        "timestamp": 1713084794.2458248
+    },
+    "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.9.2": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.9.2.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "kernelsu",
+        "gapps_brand": "none",
+        "sha256": "4adf2c4473abc16f58df6d4a82c302fd12243006f2f0d15bbeb6239c5406d927",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-with-kernelsu-v0.9.2.zip",
+        "timestamp": 1713084247.9197206
+    },
+    "WSA_2311.40000.5.0_arm64_Release-with-magisk-27.0-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release-with-magisk-27.0-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "magisk",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "fe5309c91f1f7a875a91e085459fdc750ee394a7c0d2c2c978e1695373fc252b",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-with-magisk-27.0-MindTheGapps-13.0.zip",
+        "timestamp": 1713084737.874386
+    },
+    "WSA_2311.40000.5.0_arm64_Release-with-magisk-27.0": {
+        "filename": "WSA_2311.40000.5.0_arm64_Release-with-magisk-27.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "arm64",
+        "root_sol": "magisk",
+        "gapps_brand": "none",
+        "sha256": "dec3c0c8e7a291966d01262d4011dae5185d3a0b4bae36d77aa4e2972803570e",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_arm64_Release-with-magisk-27.0.zip",
+        "timestamp": 1713084232.9047067
+    },
+    "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.9.2-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.9.2-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "kernelsu",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "a76ec09254051e56daafd09b11c501817d21fd6966c85d0df4ee3ecf87e74e6f",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.9.2-MindTheGapps-13.0.zip",
+        "timestamp": 1713084604.1876135
+    },
+    "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.9.2": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.9.2.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "kernelsu",
+        "gapps_brand": "none",
+        "sha256": "699fa998140955ebb18426f3eeb8862ccdda52cabc2412a1c55ff5bad6cfe450",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-with-kernelsu-v0.9.2.zip",
+        "timestamp": 1713084343.5852153
+    },
+    "WSA_2311.40000.5.0_x64_Release-with-magisk-27.0-MindTheGapps-13.0": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-with-magisk-27.0-MindTheGapps-13.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "magisk",
+        "gapps_brand": "MindTheGapps",
+        "sha256": "88c1ad13b51ae7d14b5b243921bf49491efa4c048b5cf4c02fb0e653a8c112f7",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-with-magisk-27.0-MindTheGapps-13.0.zip",
+        "timestamp": 1713084632.1861703
+    },
+    "WSA_2311.40000.5.0_x64_Release-with-magisk-27.0": {
+        "filename": "WSA_2311.40000.5.0_x64_Release-with-magisk-27.0.zip",
+        "type": "Release",
+        "version": "2311.40000.5.0",
+        "arch": "x64",
+        "root_sol": "magisk",
+        "gapps_brand": "none",
+        "sha256": "f3c04a17eeecebfbf08ca4767d09caa0a9c652c76a61d1ab911f5f1a28bf33b7",
+        "url": "https://github.com/Lyxot/WSAOnWin10/releases/download/2311.40000.5.0/WSA_2311.40000.5.0_x64_Release-with-magisk-27.0.zip",
+        "timestamp": 1713084360.7279773
     }
 }
