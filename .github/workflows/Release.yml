@@ -11,8 +11,6 @@ on:
         description: "ignore version"
         default: false
         type: boolean
-  schedule:
-    - cron: '0 */3 * * *'
 
 jobs:
   check:
